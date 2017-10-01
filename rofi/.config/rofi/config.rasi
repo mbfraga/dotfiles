@@ -1,0 +1,135 @@
+* {
+   maincolor: #ed8712;
+   highlight: bold #ed8712;
+   urgentcolor: #e53714;
+
+   fgwhite: #ededed;
+   blackdarkest: #1d1d1d;
+   blackwidget: #262626;
+   blackentry: #292929;
+   blackselect: #303030;
+
+   mesgcolor: #848484;
+   scrollbarcolor: #505050;
+
+}
+
+#window {
+   font: "DejaVu Sans Mono 13";
+   location:   north;
+   anchor:     north;
+   //fullscreen:true;
+   width: 40em;
+   //x-offset: ;
+   y-offset: 25%;
+
+   //border-radius: 5px;
+}
+
+
+#widnow.overlay {
+
+}
+
+#window.box {
+   background:@blackdarkest;
+}
+
+#window.mainbox.box {
+   background: @blackwidget;
+   spacing:0px;
+
+}
+
+
+#window.mainbox.inputbar.box {
+   background:@blackdarkest;
+   padding:0px 0px 0px 0px;
+   spacing:0px;
+}
+#window.mainbox.inputbar.case-indicator {
+   padding:8px 10px;
+   foreground:@maincolor;
+   background:@blackwidget;
+
+}
+#window.mainbox.inputbar.prompt {
+   padding:8px 9px;
+   background:@maincolor;
+   foreground:@blackwidget;
+}
+#window.mainbox.inputbar.entry {
+   padding:8px 10px;
+   background:@blackwidget;
+   foreground:@fgwhite;
+
+}
+
+#window.mainbox.listview.box {
+   columns:1;
+   fixed-height:false;
+   dynamic:true;
+   scrollbar:true;
+   cycle:true;
+   spacing:0px;
+   //lines:23;
+   //layout:;
+
+   background:@blackdarkest;
+   padding:2px 0px 0px 0px;
+   margin:0px 0px 2px 0px;
+}
+#window.mainbox.listview.scrollbar {
+   foreground:@scrollbarcolor;
+   background:@blackwidget;
+   handle-width: 15;
+
+}
+#window.mainbox.listview.element {
+   foreground:@fgwhite;
+   background:@blackentry;
+   border-radius:0px;
+   padding: 5px 15px;
+}
+#window.mainbox.listview.element.urgent {
+   foreground:@urgentcolor;
+}
+#window.mainbox.listview.element.active {
+   foreground:@maincolor;
+}
+
+#window.mainbox.listview.element.selected {
+   foreground:@fgwhite;
+   background:@blackselect;
+}
+#window.mainbox.listview.element.selected.urgent {
+   background:@urgentcolor;
+   foreground:@blackwidget;
+}
+#window.mainbox.listview.element.selected.active {
+   background:@maincolor;
+   foreground:@blackwidget;
+}
+
+
+#window.mainbox.sidebar.box {
+
+}
+#window.mainbox.sidebar.button {
+
+}
+
+#window.mainbox.message.textbox {
+   padding: 5px 10px;
+   foreground:@mesgcolor;
+   background:@blackwidget;
+   //font:"DejaVu Sans Mono 13";
+
+}
+#window.mainbox.message.box {
+   background:orange;
+
+}
+
+configuration {
+}

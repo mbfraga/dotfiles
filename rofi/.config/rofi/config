@@ -1,0 +1,27 @@
+! Enabled modi
+rofi.modi: run,window,ssh
+
+rofi.opacity:  100
+rofi.width:    40
+rofi.lines:    10
+rofi.columns:  1
+
+rofi.bw:       0
+rofi.eh:       1.3
+rofi.location: 0
+rofi.padding:  2
+rofi.yoffset:  21
+rofi.xoffset:  0
+
+!rofi.font:         Ubuntu Mono 12
+
+rofi.color-window: #383838, #00ff00, #505050
+rofi.color-normal: #383838, #ececec, #383838, #505050, #ffffff
+rofi.color-urgent: #ff0000, #000000, #ff0000, #000000, #ff0000
+rofi.color-active: #383838, #90ff90, #383838, #505050, #90ff90
+
+! Separator style (none, dash, solid)
+rofi.separator-style: solid
+
+rofi.threads: 4
+

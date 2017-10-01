@@ -1,0 +1,14 @@
+**.zcompdump*
+**/nvim/plugged
+**/nvim/.netrwhist
+**/mpv/watch_later*
+**/ncmpcpp/error.log
+**/ranger/bookmarks
+**/ranger/history
+**/ranger/tagged
+
+**/weechat/logs
+**/weechat/weechat.log
+**/weechat/sec.conf
+**/weechat/urlserver_list.txt
+**sync-conflict**

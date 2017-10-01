@@ -1,0 +1,25 @@
+! Enabled modi
+rofi.modi: run
+
+rofi.width:    100
+rofi.lines:    1
+rofi.columns:  10
+
+rofi.bw:       0
+rofi.eh:       1.3
+rofi.location: 1
+rofi.padding:  2
+rofi.yoffset:  0
+rofi.xoffset:  0
+
+
+rofi.color-window: #383838, #00ff00, #505050
+rofi.color-normal: #383838, #ececec, #383838, #505050, #ffffff
+rofi.color-urgent: #ff0000, #000000, #ff0000, #000000, #ff0000
+rofi.color-active: #383838, #90ff90, #383838, #505050, #90ff90
+
+! Separator style (none, dash, solid)
+rofi.separator-style: solid
+
+rofi.threads: 4
+

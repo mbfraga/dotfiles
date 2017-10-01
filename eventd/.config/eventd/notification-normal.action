@@ -1,0 +1,14 @@
+[File]
+Extends=notification.action
+
+[Action]
+Name=notification-normal
+
+[Notification]
+
+[NotificationBubble]
+Timeout=5
+Colour=#31363b
+
+[NotificationText]
+Colour=#cfcfcf

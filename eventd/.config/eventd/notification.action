@@ -1,0 +1,8 @@
+[Action]
+Name = notification
+
+[Notification]
+
+[FileWrite]
+File=file:///tmp/rofi_notification_daemon
+String={"title":"${title/"/\\\\"/\n/\\\\n}", "message":"${message/"/\\\\"/\n/\\\\n}", "client":"${client-name}", "urgency":${urgency:--1}, "icon":"${icon}"}\n

@@ -1,0 +1,14 @@
+[File]
+Extends=notification.action
+
+[Action]
+Name=notification-critical
+
+[Notification]
+
+[NotificationBubble]
+Timeout=0
+Colour=#31363b
+
+[NotificationText]
+Colour=#dd4433

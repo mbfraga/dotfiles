@@ -1,0 +1,145 @@
+Xcursor.size: 16
+
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintslight
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+Xft.dpi: 96
+
+
+URxvt*termName: rxvt-unicode-256color
+! Color Defintions
+!
+
+! Color Settings
+
+URxvt*.foreground:   #f4efe3
+URxvt*.background:   #191a1d
+URxvt*.cursorColor:  #f4efe3
+
+URxvt*.color0:       #191a1d 
+URxvt*.color1:       #f3b2ab
+URxvt*.color2:       #bad260
+URxvt*.color3:       #eac58d
+URxvt*.color4:       #c6e5f8
+URxvt*.color5:       #e4c6ed
+URxvt*.color6:       #c6f3e6
+URxvt*.color7:       #5a6373
+
+URxvt*.color8:       #333841
+URxvt*.color9:       #ea4439
+URxvt*.color10:      #50763d
+URxvt*.color11:      #fab81d
+URxvt*.color12:      #446fa6
+URxvt*.color13:      #84678f
+URxvt*.color14:      #4f7b6c
+URxvt*.color15:      #f4efe3
+
+URxvt*.color16:      #f99157
+URxvt*.color17:      #d27b53
+URxvt*.color18:      #393939
+URxvt*.color19:      #515151
+URxvt*.color20:      #a09f93
+URxvt*.color21:      #e8e6df
+
+
+URxvt.background: #191a1d
+
+
+URxvt.depth         : 32
+URxvt.transparent   : false
+URxvt.fading        : 0
+URxvt.urgentOnBell  : true
+URxvt.visualBell    : false
+!URxvt.loginShell    : true
+URxvt.saveLines: 12000
+URxvt.internalBorder: 3
+URxvt.lineSpace     : 0
+URxvt.letterSpace  : -1
+
+!URxvt.inheritPixmap : true
+!URxvt.shading      : 0 to 99 darkens, 101 to 200 lightejs
+!URxvt.shading      : 10
+
+! Fonts
+
+URxvt*font: xft:DejaVu Sans Mono:style=Regular:pixelsize=14:antialias=true:hinting=true,\
+            xft:Noto Emoji:style=Regular:pixelsize=14:antialias=true:hinting=true,\
+            xft:Noto Kannada:style=Regular:pixelsize=14:antialias=true:hinting=true
+
+!URxvt*boldFont: xft:DejaVu Sans Mono Bold:antialias=true:pixelsize=14
+!URxvt*italicFont: xft:DejaVu Sans Mono Oblique:pixelsize=10
+URxvt.allow_bold: true
+
+!#URxvt*boldItalicfont: xft:DejaVu Sans Mono Bold Oblique:size=14
+
+URxvt*scrollBar       : false
+URxvt*scrollstyle     : plain
+URxvt*scrollBar_right : true
+URxvt*thickness       : 7
+
+! Cursor
+URxvt.cursorBlink     : true
+URxvt.cursorUnderline : false
+
+! Pointer
+
+
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+
+! urxvt extensions:
+!URxvt.perl-ext-common:  default,url-select,keyboard-select
+URxvt.perl-ext-common:  default,matcher,keyboard-select,selection-to-clipboard,url-picker
+URxvt.url-launcher: /usr/bin/firefox
+URxvt.urlLauncher: /usr/bin/firefox
+URxvt.matcher.pattern.1:  \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
+URxvt.matcher.pattern.2:  \\B(/\\S+?):(\\d+)(?=:|$)
+URxvt.matcher.button: 1
+URxvt.matcher.rend.0: Uline Bold fg6
+
+
+
+!URxvt.url-select.launcher:  firefox
+!URxvt.url-select.underline: true
+! Other Settings:
+URxvt*reverseVideo: false
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
+URxvt.url-picker.order:      "descending"
+! Bindings
+!URxvt.keysym.M-u:           matcher:select
+URxvt.keysym.C-u:            perl:url-picker
+!URxvt.keysym.M-u:           perl:url-select:select_next
+!URxvt.keysym.M-i:           perl:url-select:select_prev
+URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+URxvt.keysym.M-s:           perl:keyboard-select:search
+!URxvt.keysym.M-c:           perl:clipboard:copy
+!URxvt.keysym.M-v:           perl:clipboard:paste
+!URxvt.keysym.M-C-v:         perl:clipboard:paste_escaped
+
+
+URxvt.keysym.C-l: matcher:last
+URxvt.keysym.M-l: matcher:list
+
+
+! XTERM Settings
+
+xterm*toolBar: false
+xterm*scrollBar: false
+xterm*rightScrollBar: false
+xterm*background: #1f1f1f 
+xterm*foreground: #dcdcdc
+xterm*font:-*-terminus-large-*-*-*-16-*-*-*-*-*-iso8859-*
+xterm*geometry: 120x28 
+

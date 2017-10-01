@@ -1,0 +1,15 @@
+default-interface=rofi
+qndir=~/syncthing/smalldocs/quicknotes
+#qndir=~/qn
+
+#rofi-custom-command = /home/martin/gitland/rofi/build/rofi
+
+sorttype=cdate
+sortrev=False
+
+terminal=st
+text-editor=nvim
+
+#interactive=True
+#
+fzf-keybindings=sortname=alt-q;sortcdate=alt-w;sortmdate=alt-e;sortsize=alt-r

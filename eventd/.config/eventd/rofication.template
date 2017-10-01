@@ -1,0 +1,1 @@
+{"title":"${title/"/\\"/\n/\\n}", "message":"${message/"/\\"/\n/\\n}", "client":"${client-name}", "icon":"${icon}", "urgency":${urgency}, "progress-value":${progress-value}}\n

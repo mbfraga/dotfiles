@@ -1,0 +1,177 @@
+#!/usr/bin/env python3
+import datetime
+import json
+import logging
+import sys
+import time
+import traceback
+
+import requests
+from requests.adapters import HTTPAdapter
+
+# CONFIGURATION
+# set color to False if you want to disable color
+color_online  = False
+color_offline = "#FF7066"
+color_other = "#FFAE00"
+
+# alternative string to show. Set to False to print normal status and message
+string_online  = "albion"
+string_offline = "albion"
+string_other   = ""
+
+# custom prefix string. If set, the output will be the prefix, followed by the
+# normal output. e.g., if prefix is set to "albion:", the output will be:
+# "albion:online"
+# "albion:unknown - Probably maintenance."
+prefix_online = False
+prefix_offline = False
+prefix_other = "albion"
+# END OF CONFIGURATION
+
+
+
+version = '1.0.2'
+
+albion_url = "http://serverstatus.albiononline.com:9099/"
+maintenance_url = "http://live.albiononline.com/status.txt"
+s = requests.Session()
+s.headers.update({
+    'User-Agent': 'AlbionStatus Bot @ albionstatus.com, Version: {0}'.format(version),
+})
+logger = logging.getLogger("albionstatus")
+sleep_time = 60
+#failing_status = {"current_status": "unknown",
+#                  "message": "AlbionStatus couldn't fetch status. Likely there is a maintenance going on",
+#                  "comment": "Could not fetch status."}
+failing_status = {"current_status": "unknown",
+                  "message": "Probably maintenance.",
+                  "comment": "Could not fetch status."}
+
+
+def setup_logging():
+    logger.setLevel(logging.INFO)
+
+    # create a file handler
+    handler = logging.StreamHandler(sys.stdout)
+    handler.setLevel(logging.INFO)
+
+    # create a logging format
+    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s', datefmt='%y-%m-%d %H:%M:%S')
+    handler.setFormatter(formatter)
+
+    # add the handlers to the logger
+    logger.addHandler(handler)
+
+
+def setup_requests():
+    # Zero retries for server checks
+    s.mount('http://', HTTPAdapter(max_retries=1))
+    s.mount('https://', HTTPAdapter(max_retries=1))
+
+
+def setup_everything():
+    setup_logging()
+    setup_requests()
+
+
+def parse_status(status):
+    # Parse weird status messages
+    offline_status = "offline"
+    return {
+        '500': offline_status,
+        500: offline_status,
+    }.get(status, status)
+
+
+def is_maintenance():
+    try:
+        response = s.get(maintenance_url, timeout=30)
+        response.encoding = "utf-8"
+        status = response.text
+        status = status.replace('\n', ' ').replace("\r", '').replace('\ufeff', '')
+        status = json.loads(status)
+        if "maintenance" in status["message"]:
+            return status["message"]
+    except:
+        pass
+    return False
+
+
+def parse_message(message):
+    # Parse weird messages
+    message = message.lower()
+    timeout = "Timeout - is a DDOS ongoing?"
+    maintenance_message = is_maintenance()
+    if not maintenance_message:
+        return {
+            'connect timed out': timeout,
+            'read timed out': timeout,
+        }.get(message, message)
+
+    return maintenance_message
+
+
+def get_current_status():
+    try:
+        response = s.get(albion_url, timeout=30)
+        response.encoding = "utf-8"
+        status = response.text
+        status = status.replace('\n', ' ').replace("\r", '').replace('\ufeff', '')
+        status = json.loads(status)
+        status["current_status"] = parse_status(status.pop("status"))
+        status["message"] = parse_message(status["message"])
+
+        return status
+    except:
+        try:
+            trace = traceback.format_exc()
+        except:
+            trace = ""
+
+        logger.log(logging.ERROR, "Couldn't fetch server status! Error: " + trace)
+        return failing_status
+
+
+
+if __name__ == "__main__":
+    setup_everything()
+    current_status = get_current_status()
+    sta = current_status['current_status']
+    msg = current_status['message']
+    output_string = ""
+    if sta == 'online':
+        if prefix_online:
+            output_string += prefix_online
+        if string_online:
+            output_string += string_online
+        else:
+            output_string += sta
+        print(output_string) # full text
+        print(output_string) # short text
+        if color_online:
+            print(color_online)
+    elif sta == 'offline':
+        if prefix_offline:
+            output_string += prefix_offline
+        if string_offline:
+            output_string += string_offline
+        else:
+            output_string += sta + " (" + msg + ")"
+        print(output_string) # full text
+        print(output_string) # short text
+        if color_offline:
+            print(color_offline)
+    else:
+        if prefix_other:
+            output_string += prefix_other
+        if string_other:
+            output_string += string_other
+        else:
+            output_string += sta + " (" + msg + ")"
+        print(output_string) # full text
+        print(output_string) # short text
+        if color_other:
+            print(color_other)
+
+
