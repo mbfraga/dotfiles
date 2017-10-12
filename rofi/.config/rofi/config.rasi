@@ -1,135 +1,23 @@
-* {
-   maincolor: #ed8712;
-   highlight: bold #ed8712;
-   urgentcolor: #e53714;
-
-   fgwhite: #ededed;
-   blackdarkest: #1d1d1d;
-   blackwidget: #262626;
-   blackentry: #292929;
-   blackselect: #303030;
-
-   mesgcolor: #848484;
-   scrollbarcolor: #505050;
-
-}
-
-#window {
-   font: "DejaVu Sans Mono 13";
-   location:   north;
-   anchor:     north;
-   //fullscreen:true;
-   width: 40em;
-   //x-offset: ;
-   y-offset: 25%;
-
-   //border-radius: 5px;
-}
-
-
-#widnow.overlay {
-
-}
-
-#window.box {
-   background:@blackdarkest;
-}
-
-#window.mainbox.box {
-   background: @blackwidget;
-   spacing:0px;
-
-}
-
-
-#window.mainbox.inputbar.box {
-   background:@blackdarkest;
-   padding:0px 0px 0px 0px;
-   spacing:0px;
-}
-#window.mainbox.inputbar.case-indicator {
-   padding:8px 10px;
-   foreground:@maincolor;
-   background:@blackwidget;
-
-}
-#window.mainbox.inputbar.prompt {
-   padding:8px 9px;
-   background:@maincolor;
-   foreground:@blackwidget;
-}
-#window.mainbox.inputbar.entry {
-   padding:8px 10px;
-   background:@blackwidget;
-   foreground:@fgwhite;
-
-}
-
-#window.mainbox.listview.box {
-   columns:1;
-   fixed-height:false;
-   dynamic:true;
-   scrollbar:true;
-   cycle:true;
-   spacing:0px;
-   //lines:23;
-   //layout:;
-
-   background:@blackdarkest;
-   padding:2px 0px 0px 0px;
-   margin:0px 0px 2px 0px;
-}
-#window.mainbox.listview.scrollbar {
-   foreground:@scrollbarcolor;
-   background:@blackwidget;
-   handle-width: 15;
-
-}
-#window.mainbox.listview.element {
-   foreground:@fgwhite;
-   background:@blackentry;
-   border-radius:0px;
-   padding: 5px 15px;
-}
-#window.mainbox.listview.element.urgent {
-   foreground:@urgentcolor;
-}
-#window.mainbox.listview.element.active {
-   foreground:@maincolor;
-}
-
-#window.mainbox.listview.element.selected {
-   foreground:@fgwhite;
-   background:@blackselect;
-}
-#window.mainbox.listview.element.selected.urgent {
-   background:@urgentcolor;
-   foreground:@blackwidget;
-}
-#window.mainbox.listview.element.selected.active {
-   background:@maincolor;
-   foreground:@blackwidget;
-}
-
-
-#window.mainbox.sidebar.box {
-
-}
-#window.mainbox.sidebar.button {
-
-}
-
-#window.mainbox.message.textbox {
-   padding: 5px 10px;
-   foreground:@mesgcolor;
-   background:@blackwidget;
-   //font:"DejaVu Sans Mono 13";
-
-}
-#window.mainbox.message.box {
-   background:orange;
-
-}
-
 configuration {
+   sidebar-mode: false;
+	modi: "window,run,ssh";
+	monitor: "-4";
+	fixed-num-lines: true;
+	show-icons: false;
+	terminal: "st";
+	ssh-command: "{terminal} -e '{ssh-client} {host}'";
+	run-command: "{cmd}";
+	run-shell-command: "{terminal} -e '{cmd}'";
+	levenshtein-sort: false;
+	threads: 4;
+	kb-custom-1: "Alt+1";
+	kb-custom-2: "Alt+2";
+	kb-custom-3: "Alt+3";
+	kb-custom-4: "Alt+4";
+	kb-custom-5: "Alt+5";
+	kb-custom-6: "Alt+6";
+	kb-custom-7: "Alt+7";
+	kb-custom-8: "Alt+8";
+	kb-custom-9: "Alt+9";
 }
+@import "darkorange.rasi"

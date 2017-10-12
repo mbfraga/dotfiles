@@ -1,0 +1,5 @@
+window:
+act(h, shrink vertical, i3-msg resize shrink width 10 px or 10ppt, reload)
+act(l, shrink vertical, i3-msg resize grow width 10 px or 10ppt)
+act(j, shrink vertical, i3-msg resize grow height 10 px or 10ppt)
+act(k, shrink vertical, i3-msg resize shrink height 10 px or 10ppt)

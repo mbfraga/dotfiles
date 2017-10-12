@@ -142,3 +142,6 @@ _stow xsettings
 
 echo -e "\n## STARDICT\n"
 _stow stardict
+
+echo -e "\n## ROFI\n"
+_stow rofi

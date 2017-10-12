@@ -1,0 +1,11 @@
+run:
+act(t, terminal, st)
+act(f, browser, i3_open_iff_noexist firefox Firefox)
+act(s, speedcrunch, i3_open_iff_noexist speedcrunch SpeedCrunch)
+act(g, steam, i3_open_iff_noexist steam Steam)
+act(e, file manager, dolphin)
+act(m, mbmain, mbmain)
+act(q, qnr, qnr)
+act(c, telegram, i3_open_iff_noexist telegram TelegramDesktop)
+act(w, weechat, i3_open_iff_noexist  "st -c weechat-st -e weechat -d $XDG_CONFIG_HOME/weechat" weechat-st)
+act(n, ncmcpcpp, i3_open_iff_noexist  "st -c ncmpcpp-st -e ncmpcpp" ncmpcpp-st)
