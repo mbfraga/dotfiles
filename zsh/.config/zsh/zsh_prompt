@@ -31,10 +31,10 @@ fi
 
 local _user="$(echo -e "%{\033[0;37m%}%M")"
 local _path="$(echo -e "%{\033[0;33m")%}%(8~|...|)%7~"
-local _prompt="%{$fg[white]%}→ "
+local _prompt="%{$fg[white]%}→"
 
 PROMPT='$(
 printf "\n"
 echo "$_user $_path"
-echo -e "${vcs_info_msg_0_}$_prompt %{%b%f%k%}"
+echo -e "${vcs_info_msg_0_}$_prompt %{%f%k%}"
 )'

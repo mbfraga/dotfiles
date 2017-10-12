@@ -66,7 +66,7 @@ alias irulan_mount="sshfs martin@192.168.1.27:/ ~/remote/irulan"
 alias mtm="i3-msg move workspace to output left"
 alias i3lock="i3lock -c 333"
 
-alias rofi="PATH=$PATH:~/bin rofi"
+#alias rofi="PATH=$PATH:~/bin rofi"
 
 # Notes
 alias notes="cd ~/syncthing/smalldocs/quicknotes"
@@ -78,6 +78,7 @@ alias define="sdcv -u dictd_www.dict.org_gcide"
 
 alias cower="cower -t $HOME/gitland/aur/"
 
+alias jblive="mpv rtmp://jblive.videocdn.scaleengine.net/jb-live/play/jblive.stream"
 
 #EOF
 

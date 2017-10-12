@@ -56,8 +56,12 @@ Plug 'itchyny/lightline.vim'
 " " autocomplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " " Plug 'Shougo/deoplete.nvim', { 'for': ['javascript', 'html', 'css', 'python', 'ruby', 'php', 'C', 'C++' ], 'do': ':UpdateRemotePlugins' }
-" Plug 'zchee/deoplete-jedi'
+Plug 'zchee/deoplete-jedi'
 " "" ignore certain files
+
+"" EXTERNAL
+Plug 'christoomey/vim-tmux-navigator'
+
 " 
 " " NOT IN USE
 " "" no idea
@@ -84,8 +88,9 @@ call plug#end()
 let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_compiler_latexmk = { 'options' : [ '-xelatex']}
 " " Use deoplete.
-" let g:deoplete#enable_at_startup = 1
-" "let g:deoplete#ignore_sources = {}
+let g:deoplete#enable_at_startup = 0
+autocmd InsertEnter * call deoplete#enable()
+"let g:deoplete#ignore_sources = {}
 " "let g:deoplete#ignore_sources._ = ['around']
  
 

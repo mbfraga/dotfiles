@@ -425,4 +425,3 @@ client.urgent            $urgentcolor $urgentcolor $blackdarkest $urgentcolor
 bindsym $mod+m exec eventdctl nd dismiss oldest
 bindsym $mod+Shift+m exec eventdctl nd dismiss all
 bindsym $mod+n exec rofication-gui.py
-

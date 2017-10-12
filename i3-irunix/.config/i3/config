@@ -125,7 +125,7 @@ bindsym $mod+f exec mbmain
 # Lock Screen
 bindsym Ctrl+$mod+l exec --no-startup-id i3lock
 
-bindcode 108 exec special_characters.sh
+bindcode 108 exec special_characters
 #
 #
 # Window Management Keybindings
@@ -202,12 +202,12 @@ bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace $ws5
 bindsym $mod+Shift+6 move container to workspace $ws6
 # Fix them to monitor 1
-workspace $ws1 output DP-0
-workspace $ws2 output DP-0
-workspace $ws3 output DP-0
-workspace $ws4 output DP-0
-workspace $ws5 output DP-0
-workspace $ws6 output DP-0
+workspace $ws1 output DP-0.8
+workspace $ws2 output DP-0.8
+workspace $ws3 output DP-0.8
+workspace $ws4 output DP-0.8
+workspace $ws5 output DP-0.8
+workspace $ws6 output DP-0.8
 
 
 # Secondary Monitor
@@ -483,7 +483,7 @@ set $urgentcolor #e13d31
 set $darkurgent  #472b2a
 bar {
 
-   output DP-0
+   output DP-0.8
    status_command i3blocks
    position top #<top|bottom>
 
@@ -493,7 +493,7 @@ bar {
    hidden_state show #<hide|show>
    mode dock #<dock|hide|invisible>
    modifier Mod4
-   tray_output DP-0 #none|primary|<output>
+   tray_output DP-0.8 #none|primary|<output>
 
    font pango:DejaVu Sans Mono 12
    tray_padding 2
@@ -520,7 +520,7 @@ bar {
    hidden_state show #<hide|show>
    mode dock #<dock|hide|invisible>
    modifier Mod4
-   tray_output DP-0 #none|primary|<output>
+   tray_output DP-0.8 #none|primary|<output>
 
    font pango:DejaVu Sans Mono 9
    tray_padding 2

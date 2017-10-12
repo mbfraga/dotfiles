@@ -66,11 +66,13 @@ vno <up> <Nop>
 " Map sort function to a key
 vnoremap <Leader>s :sort<CR>
 
-" split navigations
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+" Generate new vertical split
+nnoremap <silent> vv <C-w>v
+" split navigations - disable if you have vim-tmux-navigator
+"nnoremap <C-J> <C-W><C-J>
+"nnoremap <C-K> <C-W><C-K>
+"nnoremap <C-L> <C-W><C-L>
+"nnoremap <C-H> <C-W><C-H>
 
 " Folding
 " Enable folding with the spacebar

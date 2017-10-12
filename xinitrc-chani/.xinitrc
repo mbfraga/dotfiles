@@ -46,8 +46,8 @@ setxkbmap -option caps:super
 #xkbcomp -I $XDG_CONFIG_HOME/xkb $XDG_CONFIG_HOME/xkb/keymap/mykbd $DISPLAY
 
 
-systemctl --user set-environment DISPLAY=$DISPLAY
-eventdctl nd switch xcb ${DISPLAY}
+#systemctl --user set-environment DISPLAY=$DISPLAY
+#eventdctl nd switch xcb ${DISPLAY}
 
 
 exec i3 
