@@ -67,6 +67,18 @@ case $session in
       xset r rate 210 18
       exec bspwm
       ;;
+   openbox         )
+      export DESKTOP_SESSION=gnome
+      systemctl --user set-environment DISPLAY=$DISPLAY
+      eventdctl nd switch xcb ${DISPLAY}
+      sxhkd &
+      xset s off
+      xset -dpms
+      xset s noblank
+      xset r rate 210 18
+      exec openbox-session
+      ;;
+
    # No known session, try to run it as a command
    *               ) exec $1;;
 esac

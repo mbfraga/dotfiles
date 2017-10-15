@@ -1,153 +1,103 @@
-#!/bin/zsh
-#
-# Heavily inspired by jleclanche's
-# see https://github.com/jleclanche/dotfiles/blob/master/.zshrc
+#-----------------#
+# ZSH source file #
+#-----------------#
+# https://github.com/jleclanche/dotfiles/blob/master/.zshrc
+# https://github.com/MrElendig/dotfiles-alice/blob/master/.zshrc
+# https://github.com/slashbeast/things/blob/master/configs/DOTzshrc
 
-###############
-# Enable colors
-###############
 
+#--[ Enable colors ]--
 autoload -U colors && colors
 
-########
-# Locale
-########
 
+#--[ Load modules ]--
+autoload -Uz run-help zmv
+
+
+#--[Shell Options ]--
+setopt auto_cd \
+       appendhistory \
+       hist_verify \
+       hist_fcntl_lock \
+       hist_save_no_dups \
+       histignorealldups \
+       promptsubst
+# History
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE="$XDG_CACHE_HOME/shell_history"
+bindkey -M isearch . self-insert # history search fix
+
+#--[ Export variables that should have already been exported...Shame on me ]--
 export LC_ALL="en_US.UTF-8"
-
-#########################
-# Environmental Variables
-########################
-
-#sedir defaults, in case they're not already set up.
-# http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
 if [[ -z "$XDG_DATA_HOME" ]]; then
    export XDG_DATA_HOME="$HOME/.local/share"
 fi
-
 if [[ -z "$XDG_CONFIG_HOME" ]]; then
    export XDG_CONFIG_HOME="$HOME/.config"
 fi
-
 if [[ -z "$XDG_CACHE_HOME" ]]; then
    export XDG_CACHE_HOME="$HOME/.cache"
 fi
-
 if [[ -z "$XDG_DATA_DIRS" ]]; then
-	export XDG_DATA_DIRS="/usr/local/share:/usr/share"
+   export XDG_DATA_DIRS="/usr/local/share:/usr/share"
 fi
-# 
 if [[ -z "$XDG_CONFIG_DIRS" ]]; then
-	export XDG_CONFIG_DIRS="/etc/xdg"
+   export XDG_CONFIG_DIRS="/etc/xdg"
 else
-	export XDG_CONFIG_DIRS="/etc/xdg:$XDG_CONFIG_DIRS"
+   export XDG_CONFIG_DIRS="/etc/xdg:$XDG_CONFIG_DIRS"
+fi
+if ! [[ "${PATH}" =~ "^${HOME}/bin" ]]; then
+    export PATH="${HOME}/bin:${PATH}"
+fi
+# Not all servers have terminfo for rxvt-256color. :<
+if [ "${TERM}" = 'rxvt-256color' ] && ! [ -f '/usr/share/terminfo/r/rxvt-256color' ] && ! [ -f '/lib/terminfo/r/rxvt-256color' ] && ! [ -f "${HOME}/.terminfo/r/rxvt-256color" ]; then
+    export TERM='rxvt-unicode'
 fi
 
-#################################
-# Source other importan zsh files 
-#################################
 
+#--[ Source other important files ]--
 source "$XDG_CONFIG_HOME/zsh/zsh_aliases"
 source "$XDG_CONFIG_HOME/zsh/zsh_functions"
 source "$XDG_CONFIG_HOME/zsh/zsh_prompt"
 source "$XDG_CONFIG_HOME/zsh/host_specific/$(hostname).zsh" 
 source "$XDG_CONFIG_HOME/zsh/fzf/completion.zsh"
-
-# Colored man pages
-# Colored manpages
-
-
-#################################
-# Custom bindings
-#################################
-
-# run cdlast, which shows last opened directories in fzf an cds to selection
-zle -N cdlast
-bindkey '^L' cdlast
-
-#################
-# Set Vi key mode
-#################
-bindkey -v
-bindkey '^P' up-history
-bindkey '^N' down-history
-bindkey '^?' backward-delete-char
-bindkey '^h' backward-delete-char
-bindkey '^w' backward-kill-word
-#bindkey '^r' history-incremental-search-backward
-bindkey '^u' backward-kill-line
-bindkey '^k' kill-line
-
-bindkey '^[[3~' delete-char
-
-# Make ctrl-e edit the current command line
-autoload edit-command-line
-zle -N edit-command-line
-bindkey "^e" edit-command-line
-
 source "$XDG_CONFIG_HOME/zsh/fzf/key-bindings.zsh"
-# FZF fuzzy completion
+
+
+#--[ fzf ]--
+#- fzf fuzzy completion
 export fzf_default_completion="expand-or-complete-prefix"
-# 'literal trigger' & fzf-completion keybind to start fuzzy completion
+#- 'literal trigger' & fzf-completion keybind to start fuzzy completion
 export FZF_COMPLETION_TRIGGER='//'
-# export FZF_COMPLETION_TRIGGER='**'
 
-# Make sure the terminal is in application mode, when zle is
-# active. Only then are the values from $terminfo valid.
-if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
-   function zle-line-init {
-      printf "%s" ${terminfo[smkx]}
-   }
-   function zle-line-finish {
-      printf "%s" ${terminfo[rmkx]}
-   }
-   zle -N zle-line-init
-   zle -N zle-line-finish
+
+#--[ dirstack ]--
+#- Handle DIRSTACK to have a buffer of last visited directories
+DIRSTACKFILE="$HOME/.cache/zsh/dirs"
+if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
+   dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
+   #[[ -d $dirstack[1] ]] && cd $dirstack[1]
 fi
+chpwd() {
+   print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
+}
+DIRSTACKSIZE=50
 
-bindkey -M isearch . self-insert # history search fix
+setopt autopushd pushdsilent pushdtohome pushdignoredups
 
-##################
-# General Settings
-##################
-# add ~/bin to $PATH
-#path=(~/bin $path)
-#path=(~/gitland/scripts $path)
-#export PATH
-#-----------------
+
+#--[ Completion System ]--
 # add ~/.config/zsh/completion to completion paths
 # NOTE: this needs to be a directory with 0755 permissions, 
 # otherwise you will get "insecure" warnings on shell load!
 fpath=("$XDG_CONFIG_HOME/zsh/completion" $fpath)
 # set autocomplete for aliases
 setopt completealiases
-#-----------------
-# Keep 1000 lines of history within the shell and save it 
-# to ~/.cache/shell_history
-HISTSIZE=10000
-SAVEHIST=10000
-HISTFILE="$XDG_CACHE_HOME/shell_history"
-#-----------------
-# Shell Options
-#setopt autocd # assume "cd" when a command is a directory
-setopt histignorealldups # Substitute commands in the prompt
-#setopt sharehistory # Share the same history between all shells
-setopt promptsubst # required for the git plugin
-#-----------------
-
-# Other Modules
-autoload -Uz run-help zmv
-# Other Shell Options
-setopt auto_cd \
-       appendhistory \
-       hist_verify \
-       hist_fcntl_lock \
-       hist_save_no_dups
-
-
-# Completion System
+# Load
 autoload -Uz compinit
 compinit
+# Definitions
 zstyle ':completion:*:(ssh|scp|sftp|rsync):*' hosts "${(z@)${${(f@)$(<${HOME}/.ssh/known_hosts)}%%\ *}%%,*}"
 zstyle ":completion:*" auto-description "specify: %d"
 zstyle ":completion:*" completer _expand _complete _correct _approximate
@@ -161,68 +111,35 @@ zstyle ":completion:*" matcher-list "" "m:{a-z}={A-Z}" "m:{a-zA-Z}={A-Za-z}" "r:
 zstyle ":completion:*" menu select=long
 zstyle ":completion:*" select-prompt %SScrolling active: current selection at %p%s
 zstyle ":completion:*" verbose true
-
+# > `kill <tab>` will open fzf with processes to kill.
 zstyle ":completion:*:*:kill:*:processes" list-colors "=(#b) #([0-9]#)*=0=01;31"
 zstyle ":completion:*:kill:*" command "ps -u $USER -o pid,%cpu,tty,cputime,cmd"
-
-# complete 'cd -<tab>' with menu
+#- complete 'cd -<tab>' with menu
 zstyle ':completion:*:*:cd:*:directory-stack' menu yes select
-#-----------------
 
 
-############
-# Extra SHIT
-############
+#--[ Bindings ]--
+#- Run cdlast, which shows last opened directories in fzf an cds to selection
+zle -N cdlast
+bindkey '^L' cdlast
+#- Set Vi key mode
+bindkey -v
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
+# bindkey '^r' history-incremental-search-backward # let fzf handle this
+bindkey '^u' backward-kill-line
+bindkey '^k' kill-line
+bindkey '^[[3~' delete-char
+# bind editing command in vim to ctrl-e
+autoload edit-command-line
+zle -N edit-command-line
+bindkey "^e" edit-command-line
 
-##############################################################
-# Handle DIRSTACK to have a buffer of last visited directories
-##############################################################
 
-DIRSTACKFILE="$HOME/.cache/zsh/dirs"
-if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
-   dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
-   [[ -d $dirstack[1] ]] && cd $dirstack[1]
-fi
-chpwd() {
-   print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
-}
-
-DIRSTACKSIZE=50
-
-setopt autopushd pushdsilent pushdtohome
-
-## Remove duplicate entries
-#setopt pushdignoredups
-#
-### This reverts the +/- operators.
-#setopt pushdminus
-#
-
-# Syntax highlighting plugin
-if [[ -e /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
-	source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
-
-# virtualenvwrapper support
-# Remember to set $PROJECT_HOME in your profile file!
-if command -V virtualenvwrapper_lazy.sh >/dev/null 2>&1; then
-	export WORKON_HOME="$XDG_DATA_HOME/virtualenvs"
-	source virtualenvwrapper_lazy.sh
-	# Arch linux uses python3 by default, this is required to make python2-compatible projects
-	alias mkproject2="mkproject -p /usr/bin/python2"
-	alias mkvirtualenv2="mkvirtualenv -p /usr/bin/python2"
-fi
-
-# User profile
-if [[ -e "$XDG_CONFIG_HOME/zsh/profile" ]]; then
-	source "$XDG_CONFIG_HOME/zsh/profile"
-fi
-
-# Check if $LANG is badly set as it causes issues
-# if [[ $LANG == "C"  || $LANG == "" ]]; then
-# 	>&2 echo "$fg[red]The \$LANG variable is not set. This can cause a lot of problems.$reset_color"
-# fi
-
+#--[ tty config ]--
 if [ "$TERM" = "linux" ]; then
     echo -en "\e]P0191a1d" #black
     echo -en "\e]P1f3b2ab" #red
@@ -245,5 +162,55 @@ if [ "$TERM" = "linux" ]; then
     clear #for background artifacting
 fi
 
+
+#--[ Window Title ]--
+
+case $TERM in
+termite|*xterm*|rxvt|rxvt-unicode|rxvt-256color|rxvt-unicode-256color|(dt|k|E)term|st*)
+    precmd () {
+      vcs_info
+      print -Pn "\e]0;[%n@%M][%~]%#\a"
+    } 
+    preexec () { print -Pn "\e]0;[%n@%M][%~]%# ($1)\a" }
+    ;;
+  screen|screen-256color)
+    precmd () { 
+      vcs_info
+      print -Pn "\e]83;title \"$1\"\a" 
+      print -Pn "\e]0;$TERM - (%L) [%n@%M]%# [%~]\a" 
+    }
+    preexec () { 
+      print -Pn "\e]83;title \"$1\"\a" 
+      print -Pn "\e]0;$TERM - (%L) [%n@%M]%# [%~] ($1)\a" 
+    }
+    ;; 
+esac
+
+
+
+#--[ Deprecated ... Delete? ]--
+## Make sure the terminal is in application mode, when zle is
+## active. Only then are the values from $terminfo valid.
+#if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
+#   function zle-line-init {
+#      printf "%s" ${terminfo[smkx]}
+#   }
+#   function zle-line-finish {
+#      printf "%s" ${terminfo[rmkx]}
+#   }
+#   zle -N zle-line-init
+#   zle -N zle-line-finish
+#fi
+## Handle DIRSTACK to have a buffer of last visited directories
+#DIRSTACKFILE="$HOME/.cache/zsh/dirs"
+#if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
+#   dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
+#   [[ -d $dirstack[1] ]] && cd $dirstack[1]
+#fi
+#chpwd() {
+#   print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
+#}
+#
+#DIRSTACKSIZE=50
 
 #EOF
