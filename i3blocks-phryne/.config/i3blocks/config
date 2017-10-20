@@ -86,7 +86,7 @@ separator=true
 [battery]
 #label=BAT
 label=⚡
-#instance=1
+instance=0
 interval=30
 
 # Volume indicator
