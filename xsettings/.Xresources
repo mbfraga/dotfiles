@@ -140,6 +140,5 @@ xterm*scrollBar: false
 xterm*rightScrollBar: false
 xterm*background: #1f1f1f 
 xterm*foreground: #dcdcdc
-xterm*font:-*-terminus-large-*-*-*-16-*-*-*-*-*-iso8859-*
-xterm*geometry: 120x28 
+xterm*faceName: DejaVu Sans Mono:pixelsize=14
 

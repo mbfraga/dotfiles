@@ -15,13 +15,17 @@ autoload -Uz run-help zmv
 
 
 #--[Shell Options ]--
-setopt auto_cd \
-       appendhistory \
-       hist_verify \
-       hist_fcntl_lock \
-       hist_save_no_dups \
-       histignorealldups \
-       promptsubst
+# name of directory will cd to it
+setopt auto_cd
+setopt appendhistory
+setopt hist_verify
+setopt hist_fcntl_lock
+setopt hist_save_no_dups
+setopt histignorealldups
+setopt promptsubst
+# disable ctrl-d closing the terminal
+setopt IGNORE_EOF
+
 # History
 HISTSIZE=10000
 SAVEHIST=10000
@@ -57,12 +61,18 @@ fi
 
 
 #--[ Source other important files ]--
-source "$XDG_CONFIG_HOME/zsh/zsh_aliases"
-source "$XDG_CONFIG_HOME/zsh/zsh_functions"
-source "$XDG_CONFIG_HOME/zsh/zsh_prompt"
+source "$XDG_CONFIG_HOME/zsh/zsh_prompt.zsh"
+source "$XDG_CONFIG_HOME/zsh/zsh_functions.zsh"
 source "$XDG_CONFIG_HOME/zsh/host_specific/$(hostname).zsh" 
 source "$XDG_CONFIG_HOME/zsh/fzf/completion.zsh"
 source "$XDG_CONFIG_HOME/zsh/fzf/key-bindings.zsh"
+# Source $XDG_CONFIG_HOME/profile/*
+# I keep my aliases and generic functions in there.
+if [[ -d "$XDG_CONFIG_HOME/profile.d" ]]; then
+   for f in $XDG_CONFIG_HOME/profile.d/*; do
+      . "$f"
+   done
+fi
 
 
 #--[ fzf ]--

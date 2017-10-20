@@ -1,0 +1,7 @@
+input "0:0:Cypress_APA_Trackpad_(cyapa)" {
+   accel_profile flat
+   click_method clickfinger
+   dwt enabled
+   tap disabled
+   natural_scroll disabled
+}

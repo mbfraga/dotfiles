@@ -21,7 +21,7 @@ colors_enabled="yes"
 # Playlist
 
 #"$L(9)[black]{l} (20)[red]{a} (30)[blue]{b} $L(20)[default]{t}"
-song_columns_list_format = "(3f)[yellow]{n} (40)[default]{t|f} (30)[white]{A|a} (30)[white]{br} (5f)[white]{lr}"
+song_columns_list_format = "(3f)[yellow]{n} (40)[default]{t|f} (30)[white]{a|A} (30)[white]{br} (5f)[white]{lr}"
 #song_list_format = "$1$9%l$1$9 $1¦$9 $2%a$9 $1¦$9 $5%b$9 $R$1$9%t$1$9 $1¦$9 $1%n$9"
 #song_list_format = "$(16)%t$9 $R $(8){%A}{%a}$9"
 song_list_format = "%D/%f"
