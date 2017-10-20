@@ -11,4 +11,5 @@
 **/weechat/weechat.log
 **/weechat/sec.conf
 **/weechat/urlserver_list.txt
+**/weechat/script/*
 **sync-conflict**
