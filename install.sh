@@ -77,6 +77,9 @@ _stow zsh
 echo "   creating $HOME/.cache/zsh"
 mkdir -p $HOME/.cache/zsh
 
+echo -e "\n##PROFILE.D\n"
+_stow profile.d
+
 echo -e "\n## PROFILE"
 _stow profile
 
@@ -145,3 +148,7 @@ _stow stardict
 
 echo -e "\n## ROFI\n"
 _stow rofi
+
+echo -e "\n##QUTEBROWSER\n"
+_stow qutebrowser
+

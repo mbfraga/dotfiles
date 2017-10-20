@@ -1,0 +1,91 @@
+#---------#
+# Aliases #
+#---------#
+#--[ Common Commands ]--
+alias more='less'
+alias nano='nano -w'
+alias ping='ping -c 5'
+alias ..='cd ..'
+alias df='df -h'
+alias du='du -c -h'
+
+alias lr='ls -R'
+alias ll='ls -l'
+alias la='ls -A'
+alias lla='ll -A'
+alias lx='ll -BX' # Sort by extension
+alias lz='ll -rS' # Sort by size
+alias lh='ll -zh'
+alias lm='la | more'
+
+alias info='info --vi-keys'
+
+
+#--[ Color aliases ]--
+if command -V dircolors >/dev/null 2>&1; then
+   eval "$(dircolors -b)"
+   # Only alias ls colors if dircolors is installed
+   alias ls="ls --color=auto"
+   alias dir="dir --color=auto"
+   alias vdir="vdir --color=auto"
+fi
+alias grep="grep --color=auto"
+alias fgrep="fgrep --color=auto"
+alias egrep="egrep --color=auto"
+alias less="less -R"
+
+
+#--[ New Commands ]--
+alias da='date "+%A, %B %d %Y [%T]"'
+alias du1='du --max-depth=1'
+alias hist='history|grep'
+alias openports='netstat --all --numeric --programs --inet --inet6'
+alias psg='ps -Af |grep $1'
+
+
+#--[ Aliases ]--
+if command -v nvim >/dev/null 2>&1; then
+   alias vim='nvim'
+   alias vimdiff='nvim -d'
+fi
+alias mus='ncmpcpp'
+alias thes='sdcv -u "Moby Thesaurus II"'
+alias define="sdcv -u dictd_www.dict.org_gcide"
+alias cower="cower -t $HOME/gitland/aur/"
+
+
+#--[ git ]--
+alias gs='git status'
+
+#--[ For XDG compatibility ]--
+#alias ncmpcpp='ncmpcpp -c "$XDG_CONFIG_HOME"/ncmpcpp'
+alias tmux='tmux -f "$XDG_CONFIG_HOME"/tmux/tmux.conf'
+alias mpdscribble='mpdscribble --conf $XDG_CONFIG_HOME/mpdscribble/mpdscribble.conf'
+alias weechat='weechat -d $XDG_CONFIG_HOME/weechat'
+alias mutt='mutt -F "$XDG_CONFIG_HOME"/mutt/muttrc'
+
+
+#--[ Mounts ]--
+alias alexandria_mount="sshfs martin@192.168.1.50:/mnt/alexandria ~/remote/alexandria"
+alias irulan_mount="sshfs martin@192.168.1.27:/ ~/remote/irulan"
+
+
+#--[ Remotes ]--
+alias musicpi="ncmpcpp -h 192.168.1.34"
+
+
+#--[ i3 ]--
+alias mtm="i3-msg move workspace to output left"
+alias i3lock="i3lock -c 333"
+
+
+# Notes
+alias notes="cd ~/syncthing/smalldocs/quicknotes"
+
+
+#--[ Web ]--
+alias jblive="mpv rtmp://jblive.videocdn.scaleengine.net/jb-live/play/jblive.stream"
+
+#EOF
+
+
