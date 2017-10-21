@@ -321,8 +321,8 @@ mode "audio" {
 }
 
 
-bindsym $mod+r exec "rofi -show blezz -modi blezz -auto-select -matching normal -blezz-config ~/.config/rofi/blezz_run"
-bindsym $mod+o exec "rofi -show blezz -modi blezz -auto-select -matching normal -blezz-config ~/.config/rofi/blezz_run"
+bindsym $mod+r exec "rofi_launch ~/.config/rofi/rofi_launch_run"
+bindsym $mod+o exec "rofi_launch ~/.config/rofi/rofi_launch_run"
 #bindsym $mod+r mode "open"
 #bindsym $mod+o mode "open"
 #mode "open" {
