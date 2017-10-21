@@ -19,7 +19,7 @@ if [[ -d "$HOME/bin" ]]; then
 fi
 
 
-export BROWSER=firefox
+export BROWSER=qutebrowser
 export VISUAL=nvim
 export EDITOR=nvim
 export TERMINAL="st"

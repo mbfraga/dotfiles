@@ -192,14 +192,14 @@ c.colors.statusbar.url.success.https.fg = element_lightgreen
 c.colors.tabs.bar.bg = content_black
 
 c.colors.tabs.even.bg = interface_black
-c.colors.tabs.even.fg = foreground
+c.colors.tabs.even.fg = highlight_gray
 
 c.colors.tabs.indicator.error = urgent_red
 c.colors.tabs.indicator.start = element_blue
 c.colors.tabs.indicator.stop = element_darkgreen
 
 c.colors.tabs.odd.bg = interface_black
-c.colors.tabs.odd.fg = foreground
+c.colors.tabs.odd.fg = highlight_gray
 
 c.colors.tabs.selected.even.bg = title_color
 c.colors.tabs.selected.even.fg = interface_black

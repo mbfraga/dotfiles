@@ -15,8 +15,8 @@
 ## Your preferred applications
    set $term st
    #set $menu dmenu_run -b
-   set $menu rofi -show run
-   #set $menu dmenu_run -l 10
+   #set $menu rofi -show run
+   set $menu dmenu_run -l 10
    set $web_browser firefox
    set $file_browser dolphin
 
@@ -73,7 +73,7 @@
    bindsym $mod+e exec $file_browser
    bindsym $mod+f exec $web_browser
    bindsym $mod+d exec $menu
-   bindsym $mod+q exec urxvt -e qnf
+   bindsym $mod+q exec $term -e qnf
    #bindsym $mod+q exec qnr
 
    # kill focused window

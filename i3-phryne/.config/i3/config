@@ -55,7 +55,7 @@ exec --no-startup-id numlockx off
 ###################
 exec --no-startup-id ~/scripts/setmon2 -n external
 exec telegram -startintray &
-exec nm-applet &
+#exec nm-applet &
 #exec --no-startup-id dunst
 #exec --no-startup-id compton
 exec --no-startup-id nitrogen --restore
@@ -89,7 +89,7 @@ set $rmod Mod4+Shift
 # Start a terminal
 bindsym $mod+Return exec st
 bindsym $mod+t exec st
-bindsym $mod+f exec "notify-send -t 1 'opening firefox...'; firefox"
+bindsym $mod+f exec "$BROWSER"
 bindsym $mod+e exec "notify-send -t 1 'opening dolphin...'; QT_QPA_PLATFORMTHEME='qt5ct' dolphin"
 #bindsym $mod+n exec termite --name ncmpcpp -e ncmpcpp playlist
 bindsym $mod+d exec rofi -show run

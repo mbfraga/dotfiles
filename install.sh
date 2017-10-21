@@ -152,3 +152,6 @@ _stow rofi
 echo -e "\n##QUTEBROWSER\n"
 _stow qutebrowser
 
+echo -e "\n##EVENTD\n"
+_stow eventd
+
