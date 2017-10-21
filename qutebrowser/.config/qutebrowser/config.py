@@ -66,7 +66,7 @@ widget_black = bg_hard
 content_black = bg_soft
 highlight_gray = gray_soft
 highlight_dark = gray_hard
-title_color = old_gold
+title_color = interface_black
 selected_color_bg = old_gold
 selected_color_fg = interface_black
 urgent_red = temple
@@ -191,20 +191,20 @@ c.colors.statusbar.url.success.https.fg = element_lightgreen
 
 c.colors.tabs.bar.bg = content_black
 
-c.colors.tabs.even.bg = interface_black
+c.colors.tabs.even.bg = highlight_dark
 c.colors.tabs.even.fg = highlight_gray
 
 c.colors.tabs.indicator.error = urgent_red
 c.colors.tabs.indicator.start = element_blue
 c.colors.tabs.indicator.stop = element_darkgreen
 
-c.colors.tabs.odd.bg = interface_black
+c.colors.tabs.odd.bg = highlight_dark
 c.colors.tabs.odd.fg = highlight_gray
 
 c.colors.tabs.selected.even.bg = title_color
-c.colors.tabs.selected.even.fg = interface_black
+c.colors.tabs.selected.even.fg = foreground
 c.colors.tabs.selected.odd.bg = title_color
-c.colors.tabs.selected.odd.fg = interface_black
+c.colors.tabs.selected.odd.fg = foreground
 
 ## Background color for webpages if unset (or empty to use the theme's
 ## color)

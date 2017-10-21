@@ -110,6 +110,9 @@ _stow ncmpcpp
 echo -e "\n## QN\n"
 _stow qn
 
+echo -e "\n## mbrun\n"
+_stow mbrun
+
 echo -e "\n## RANGER\n"
 _stow ranger
 

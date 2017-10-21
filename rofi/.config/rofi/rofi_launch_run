@@ -1,0 +1,10 @@
+:f browser        |i3_open_iff_noexist "$BROWSER" "$BROWSER"
+:t st             |st
+:e dolphin        |dolphin
+:s speedcrunch    |i3_open_iff_noexist speedcrunch SpeedCrunch
+:g steam          |i3_open_iff_noexist steam Steam
+:m mbmain         |mbmain
+:q qnr            |qnr
+:c telegram       |i3_open_iff_noexist telegram TelegramDesktop
+:w weechat        |i3_open_iff_noexist  "st -c weechat-st -e weechat -d $XDG_CONFIG_HOME/weechat" weechat-st
+:n ncmpcpp        |i3_open_iff_noexist  "st -c ncmpcpp-st -e ncmpcpp" ncmpcpp-st

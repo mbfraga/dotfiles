@@ -96,9 +96,9 @@ bindsym $mod+d exec rofi -show run
 bindsym $mod+g exec rofi -show window
 bindsym Mod1+Tab exec rofi -show window
 bindsym $mod+c exec telegram
-bindsym $mod+r exec rofi -show blezz -modi blezz -auto-select \
-                         -matching normal \
-                         -blezz-config /home/martin/.config/rofi/blezz_run
+bindsym $mod+r exec rofi_launch ~/.config/rofi/rofi_launch_run
+bindsym $mod+o exec rofi_launch ~/.config/rofi/rofi_launch_run
+
 #bindsym $rmod+c exec  ~/bin/rofipaste
 #bindsym $rmod+m exec clerk
 #bindsym $rmod+h exec termite --name htop -e htop
