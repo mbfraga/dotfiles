@@ -2,96 +2,42 @@
 # Martin B. Fraga
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 # REQUIRES:
-#  xset
-#  numlockx
-#  i3lock (aliased to slock)
-#  nm-applet
 #  Telegram
-#  Copy-Agent
-#  dunst
 #  compton
 #  nitrogen
-#  mpdscribble
-#  gpaste
 #
-##########
-# Gaps
-##########
-#gaps inner 0
-#gaps outer 0
-#smart_gaps off
-#smart_borders on
-#
-##########
-# Defaults
-##########
 
-set $UNFOCUS #141414
-set $FOCUS #00b0ef
-#set $UNFOCUS #3c3b37
-set $ACTIVE #00ef71
-set $URGENT #BF1ED1
-
-
+#--[ Unbind stupid mouse scrolly things ]--
 bindsym button4 nop
 bindsym button5 nop
 
-#i3-sensible-terminal=urxvt
-##########
-# Settings
-##########
+#--[ General settings ]--
 focus_follows_mouse no
-#show_marks yes
+# show_marks yes
 mouse_warping none
 hide_edge_borders smart 
+# new_float pixel 3
 
-#exec --no-startup-id xset s off
-#exec --no-startup-id xset dpms 600 900 1200 &
-#exec --no-startup-id xautolock -time 10 -locker i3lock -notify 30
-exec --no-startup-id numlockx off
-
-###################
-# Apps to Autostart
-###################
-exec --no-startup-id ~/scripts/setmon2 -n external
+#--[ Autostart apps ]--
 exec telegram -startintray &
-#exec nm-applet &
-#exec --no-startup-id dunst
-#exec --no-startup-id compton
 exec --no-startup-id nitrogen --restore
-#exec --no-startup-id gpaste
+exec --no-startup-id compton
+# bindsym Ctrl+Shift+F12 exec ~/bin/compton_toggle
 
-# Compton
-#bindsym Ctrl+Shift+F12 exec ~/bin/compton_toggle
-
-#==============
-# MODIFIER KEYS 
-#==============
-#
-# Main mod key is Super key
+#--[ Modifier keys ]--
+ #- Main mod key is Super key
 set $mod Mod4
-# Mod key for launching programs is super + alt
+ #- Mod key for launching programs is super + alt
 set $rmod Mod4+Shift
 
 
-#================
-# LOOKS (look, theme)
-#================
-#
-#new_float pixel 3
-
-#============
-# KEYBINDINGS
-#============
-#
-# Application Keybindings
-#------------------------
-# Start a terminal
-bindsym $mod+Return exec st
-bindsym $mod+t exec st
-bindsym $mod+f exec "$BROWSER"
-bindsym $mod+e exec "notify-send -t 1 'opening dolphin...'; QT_QPA_PLATFORMTHEME='qt5ct' dolphin"
-#bindsym $mod+n exec termite --name ncmpcpp -e ncmpcpp playlist
+#--[ Keybindings ]--
+ #- Application Keybindings
+bindsym $mod+Return exec "$TERMINAL || i3-sensible-terminal"
+bindsym $mod+t exec "$TERMINAL || i3-sensible-terminal"
+bindsym $mod+f exec "$BROWSER || firefox"
+bindsym $mod+e exec dolphin
+# bindsym $mod+n exec termite --name ncmpcpp -e ncmpcpp playlist
 bindsym $mod+d exec rofi -show run
 bindsym $mod+g exec rofi -show window
 bindsym Mod1+Tab exec rofi -show window
@@ -99,144 +45,112 @@ bindsym $mod+c exec telegram
 bindsym $mod+r exec rofi_launch ~/.config/rofi/rofi_launch_run
 bindsym $mod+o exec rofi_launch ~/.config/rofi/rofi_launch_run
 
-#bindsym $rmod+c exec  ~/bin/rofipaste
-#bindsym $rmod+m exec clerk
-#bindsym $rmod+h exec termite --name htop -e htop
-#bindsym $rmod+c exec telegram
-
 bindsym $mod+q exec qnr
 bindsym $mod+w exec mbmain
 
-#bindsym $rmod+c exec gpaste-client get 0
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# Lock Screen
+ #- Lock Screen
 bindsym Ctrl+$mod+l exec --no-startup-id i3lock
-
 bindcode 108 exec specialcharacters
 
-#
-# Window Management Keybindings
-#------------------------------
-# kill focused window
+
+#--[ Window Management Keybindings ]--
+ #- kill focused window
 bindsym $rmod+q kill
 bindsym Mod1+F3 kill
 bindsym Mod1+F4 kill
-# change focus
+ #- change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
-# alternatively, you can use the cursor keys:
+ #- alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-#
-# cycle windows (for single hand)
-#bindsym Mod1+Tab focus left
-#bindsym $mod+Tab focus left
-#bindsym Mod1+` focus right
+ #- cycle windows (for single hand)
+# bindsym Mod1+Tab focus left
+# bindsym $mod+Tab focus left
+# bindsym Mod1+` focus right
 
-# move focused window
+ #- move focused window
 bindsym $rmod+h move left
 bindsym $rmod+j move down
 bindsym $rmod+k move up
 bindsym $rmod+l move right
-# alternatively, you can use the cursor keys:
+ #- alternatively, you can use the cursor keys:
 bindsym $rmod+Left move left
 bindsym $rmod+Down move down
 bindsym $rmod+Up move up
 bindsym $rmod+Right move right
 
-# split in horizontal orientation
+ #- split in horizontal orientation
 bindsym $mod+b split h
-# split in vertical orientation
+ #- split in vertical orientation
 bindsym $mod+v split v
 
-# enter fullscreen mode for the focused container
+ #- enter fullscreen mode for the focused container
 bindsym $rmod+f fullscreen
-# change container layout (stacked, tabbed, toggle split)
-bindsym $rmod+s layout stacking
+ #- container layout (stacked, tabbed, toggle split)
+# bindsym $rmod+s layout stacking
 bindsym $rmod+w layout tabbed
 bindsym $rmod+e layout toggle split
 
-# Floating stuff
-# toggle tiling / floating
+ #- toggle tiling / floating
 bindsym $rmod+space floating toggle
-# change focus between tiling / floating windows
+ #- change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
 # Focus
-# focus the parent container
+ #- focus the parent container
 bindsym $mod+a focus parent
-# focus the child container
+ #- focus the child container
 bindsym $rmod+a focus child
 
-#
-# Workspace Management Keybindings
-#---------------------------------
-# switch to workspace
+#--[ Workspace Management Keybindings ]--
+ #- switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
-#bindsym $mod+7 workspace 7
-#bindsym $mod+8 workspace 8
-#bindsym $mod+9 workspace 9
-#bindsym $mod+0 workspace 10
 
-# move focused container to workspace
+ #- move focused container to workspace
 bindsym $rmod+1 move container to workspace 1
 bindsym $rmod+2 move container to workspace 2
 bindsym $rmod+3 move container to workspace 3
 bindsym $rmod+4 move container to workspace 4
 bindsym $rmod+5 move container to workspace 5
 bindsym $rmod+6 move container to workspace 6
-#bindsym $mod+Shift+7 move container to workspace 7
-#bindsym $mod+Shift+8 move container to workspace 8
-#bindsym $mod+Shift+9 move container to workspace 9
-#bindsym $mod+Shift+0 move container to workspace 10
-#
 
-# switch between the current and the previously focused one
+
+ #- switch between the current and the previously focused one
 #bindsym $mod+n workspace back_and_forth
 #bindsym $mod+Shift+n move container to workspace back_and_forth
 bindsym $mod+Tab workspace next
 
 
-# scratchpad
+ #- scratchpad
 bindsym $rmod+minus move scratchpad
 bindsym $rmod+plus  scratchpad show
 
 
-# resize window (you can also use the mouse for that)
+ #- resize window (you can also use the mouse for that)
 bindsym $rmod+r mode "resize"
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym h resize shrink width 10 px or 10 ppt
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape
+         #- back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
 
 mode "audio" {
       bindsym a exec false
@@ -311,50 +225,36 @@ mode "modes" {
    }
 
 
-# Monitor Management Keybindings
-#-------------------------------
-# cycle monitor configurations
+#--[ Monitor Management Keybindings ]]-
+ #- cycle monitor configurations
 bindsym $rmod+p exec ~/scripts/setmon2 -n cycle
-# manage multimonitor
+ #- manage multimonitor
 bindsym $rmod+x move workspace to output right
 
-#
-# Mouse-clicky settings
-#----------------------
-# Use Mouse+$mod to drag floating windows to their wanted position
+#--[ Mouse-clicky settings ]--
+ #- Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-
 bindsym --release button2 kill
 
-######
-# Misc
-######
-# reload the configuration file
+#--[ Misc ]--
+ #- reload the configuration file
 bindsym Ctrl+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+ #- restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym Ctrl+Shift+r restart
-# exit i3 (logs you out of your X session)
+ #- exit i3 (logs you out of your X session)
 bindsym Ctrl+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
 
 
-#
-# Volume Control
-#---------------
+#--[ Volume Control ]--
 bindsym $mod+F10 exec --no-startup-id amixer -D pulse set Master 3%+ unmute 
 bindsym $mod+F9 exec --no-startup-id amixer -D pulse set Master 3%- unmute 
 bindsym $mod+F8 exec amixer -q -D pulse set Master toggle
 
-
-
-#
-# Brightness Control
-#-------------------
+#--[ Brightness Control ]--
 bindsym $mod+F7 exec xbacklight -inc 20 # increase screen brightness
 bindsym $mod+F6 exec xbacklight -dec 20 # decrease screen brightness
 
-##########################
-# Per-application Settings
-##########################
+#--[ Per-application Settings ]--
 for_window [class="dota_linux"] none
 for_window [class="Gpick"] floating enable
 for_window [class="Pavucontrol"] floating enable
@@ -362,15 +262,9 @@ for_window [class="Tomboy"] floating enable
 #for_window [class="Steam"] floating enable
 #for_window [class="it-unitn-ing-rista-Maud"] floating enable
 #for_window [title="GNU Image Manipulation Program"] floating enable
-#
-#
 for_window [title="Quick Format Citation"] floating enable
 
-# for i3blocks
-bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
-bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
-#
-
+#--[ theme stuff ]--
 #set $maincolor #77aadb
 #set $maincolor #ed8712
 set $maincolor #eac58d
@@ -421,7 +315,7 @@ client.unfocused         $blackwidget $blackwidget $maincolor    $blackdarkest
 client.urgent            $urgentcolor $urgentcolor $blackdarkest $urgentcolor
 
 
-#TESTING
+#--[ TESTING ]--
 bindsym $mod+m exec eventdctl nd dismiss oldest
 bindsym $mod+Shift+m exec eventdctl nd dismiss all
 bindsym $mod+n exec rofication-gui.py
