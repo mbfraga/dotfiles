@@ -48,11 +48,10 @@ case $session in
       # both commands below required for eventd
       systemctl --user set-environment DISPLAY=$DISPLAY
       eventdctl nd switch xcb ${DISPLAY}
-      xset s off
-      xset -dpms
-      xset s noblank
+      xset s 300
       xset r rate 210 18
-      exec i3
+      xss-lock -- i3lock -e -c "333333" &
+      exec i3; vlock
       ;;
    mate            ) exec mate-session;;
    budgie          ) exec budgie-desktop;;
@@ -61,22 +60,20 @@ case $session in
       systemctl --user set-environment DISPLAY=$DISPLAY
       eventdctl nd switch xcb ${DISPLAY}
       sxhkd &
-      xset s off
-      xset -dpms
-      xset s noblank
+      xset s 300
       xset r rate 210 18
-      exec bspwm
+      xss-lock -- i3lock -e -c "333333" &
+      exec bspwm; vlock
       ;;
    openbox         )
       export DESKTOP_SESSION=gnome
       systemctl --user set-environment DISPLAY=$DISPLAY
       eventdctl nd switch xcb ${DISPLAY}
       sxhkd &
-      xset s off
-      xset -dpms
-      xset s noblank
+      xset s 300
       xset r rate 210 18
-      exec openbox-session
+      xss-lock -- i3lock -e -c "333333" &
+      exec openbox-session; vlock
       ;;
 
    # No known session, try to run it as a command

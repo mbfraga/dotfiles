@@ -158,7 +158,8 @@ if [ "$TERM" = "linux" ]; then
     echo -en "\e]P4c6e5f8" #blue
     echo -en "\e]P5e4c6ed" #magenta
     echo -en "\e]P6c6f3e6" #cyan
-    echo -en "\e]P7333841" #darkgrey
+    echo -en "\e]P7ece3d0" #white
+    #echo -en "\e]P7333841" #darkgrey
 
     echo -en "\e]P85a6373" #lightgrey
     echo -en "\e]P9ea4439" #darkred
