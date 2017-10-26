@@ -13,3 +13,5 @@
 **/weechat/urlserver_list.txt
 **/weechat/script/*
 **sync-conflict**
+**/qutebrowser/bookmark
+**/qutebrowser/quickmarks
