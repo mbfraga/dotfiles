@@ -49,11 +49,9 @@ case $session in
       systemctl --user set-environment DISPLAY=$DISPLAY
       eventdctl nd switch xcb ${DISPLAY}
       numlockx off
-      xset s off
-      xset -dpms
-      xset s noblank
+      xset s 300
       xset r rate 210 18
-      xautolock -time 5 -locker i3lock -notify 30 &
+      xss-lock -- i3lock -n
       exec i3; vlock
       ;;
    mate            ) exec mate-session;;
@@ -63,11 +61,9 @@ case $session in
       systemctl --user set-environment DISPLAY=$DISPLAY
       eventdctl nd switch xcb ${DISPLAY}
       numlockx off
-      xset s off
-      xset -dpms
-      xset s noblank
+      xset s 300
       xset r rate 210 18
-      xautolock -time 5 -locker i3lock -notify 30 &
+      xss-lock -- i3lock -n
       sxhkd &
       exec bspwm; vlock
       ;;
