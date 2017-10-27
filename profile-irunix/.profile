@@ -8,6 +8,10 @@ fi
 if [[ -z "$XDG_DATA_HOME" ]]; then
    export XDG_DATA_HOME="$HOME/.local/share"
 fi
+if [[ -z "$LANG" ]]; then
+   export LANG="en_US.UTF-8"
+fi
+
 
 # PATH
 if [[ -d "$HOME/gitland/scripts" ]]; then
