@@ -51,7 +51,7 @@ case $session in
       numlockx off
       xset s 300
       xset r rate 210 18
-      xss-lock -- i3lock -n
+      xss-lock -- i3lock -n &
       exec i3; vlock
       ;;
    mate            ) exec mate-session;;
@@ -63,7 +63,7 @@ case $session in
       numlockx off
       xset s 300
       xset r rate 210 18
-      xss-lock -- i3lock -n
+      xss-lock -- i3lock -n &
       sxhkd &
       exec bspwm; vlock
       ;;
