@@ -28,3 +28,9 @@ export VISUAL=nvim
 export EDITOR=nvim
 export TERMINAL="st"
 
+. /usr/share/defaults/etc/profile.d/50-budgie-accessibility.sh
+. /usr/share/defaults/etc/profile.d/50-history.sh
+. /usr/share/defaults/etc/profile.d/50-umask.sh
+. /usr/share/defaults/etc/profile.d/50-dircolors.sh
+. /usr/share/defaults/etc/profile.d/70-snapd.sh
+. /usr/share/defaults/etc/profile.d/vte.sh

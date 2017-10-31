@@ -452,6 +452,7 @@ for_window [class="dota_linux"] none
 for_window [class="Gpick"] floating enable
 for_window [class="Pavucontrol"] floating enable, move position mouse
 for_window [class="Tomboy"] floating enable
+for_window [class="SpeedCrunch"] floating enable
 assign [class="Steam"] 5
 assign [class="Lutris"] 5
 #for_window [class="it-unitn-ing-rista-Maud"] floating enable

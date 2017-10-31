@@ -30,6 +30,8 @@ set shiftwidth=3              " how many columns text is indented with << >>
 set shiftround                " shift when << >> 
 "set foldcolumn=1
 
+au Filetype cpp setl sw=2 sts=2 et
+
 
 set linespace=0               " only in gui
 set history=5000              " size of history of command to keep

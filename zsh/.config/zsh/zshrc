@@ -30,6 +30,7 @@ setopt IGNORE_EOF
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE="$XDG_CACHE_HOME/shell_history"
+mkdir -p "$HISTFILE:h"
 bindkey -M isearch . self-insert # history search fix
 
 #--[ Export variables that should have already been exported...Shame on me ]--
@@ -64,8 +65,6 @@ fi
 source "$XDG_CONFIG_HOME/zsh/zsh_prompt.zsh"
 source "$XDG_CONFIG_HOME/zsh/zsh_functions.zsh"
 source "$XDG_CONFIG_HOME/zsh/host_specific/$(hostname).zsh" 
-source "$XDG_CONFIG_HOME/zsh/fzf/completion.zsh"
-source "$XDG_CONFIG_HOME/zsh/fzf/key-bindings.zsh"
 # Source $XDG_CONFIG_HOME/profile/*
 # I keep my aliases and generic functions in there.
 if [[ -d "$XDG_CONFIG_HOME/profile.d" ]]; then
@@ -76,6 +75,12 @@ fi
 
 
 #--[ fzf ]--
+if [[ -e "$HOME/.fzf.zsh" ]]; then
+   . "$HOME/.fzf.zsh"
+else
+   source "$XDG_CONFIG_HOME/zsh/fzf/completion.zsh"
+   source "$XDG_CONFIG_HOME/zsh/fzf/key-bindings.zsh"
+fi
 #- fzf fuzzy completion
 export fzf_default_completion="expand-or-complete-prefix"
 #- 'literal trigger' & fzf-completion keybind to start fuzzy completion
@@ -198,6 +203,9 @@ termite|*xterm*|rxvt|rxvt-unicode|rxvt-256color|rxvt-unicode-256color|(dt|k|E)te
 esac
 
 
+compdef "_files -W $HOME/syncthing/smalldocs/quicknotes/ -/" n
+compdef "_files -W $HOME/syncthing/smalldocs/quicknotes/ -/" nrm
+compdef "_files -W $HOME/syncthing/smalldocs/quicknotes/ -/" nmv
 
 #--[ Deprecated ... Delete? ]--
 ## Make sure the terminal is in application mode, when zle is

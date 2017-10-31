@@ -52,7 +52,7 @@ alias mus='ncmpcpp'
 alias thes='sdcv -u "Moby Thesaurus II"'
 alias define="sdcv -u dictd_www.dict.org_gcide"
 alias cower="cower -t $HOME/gitland/aur/"
-
+alias fzf="fzf --color=16"
 
 #--[ git ]--
 alias gs='git status'

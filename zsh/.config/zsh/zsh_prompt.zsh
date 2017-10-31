@@ -17,6 +17,7 @@ precmd() {
 
 
 function zle-line-init zle-line-finish zle-keymap-select {
+  vimode=${${KEYMAP/vicmd/[c]}/(main|viins)/}
   zle reset-prompt
   zle -R
 }
@@ -32,9 +33,10 @@ fi
 local _user="$(echo -e "%{\033[0;37m%}%M")"
 local _path="$(echo -e "%{\033[0;33m")%}%(8~|...|)%7~"
 local _prompt="%{$fg[white]%}→"
+local _vimode="$(echo -e "%{\033[0;33m")%}"
 
 PROMPT='$(
 printf "\n"
 echo "$_user $_path"
-echo -e "${vcs_info_msg_0_}$_prompt %{%f%k%}"
+echo -e "${vcs_info_msg_0_}${vimode}$_prompt %{%f%k%}"
 )'
