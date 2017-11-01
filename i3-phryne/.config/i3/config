@@ -269,7 +269,7 @@ for_window [title="Quick Format Citation"] floating enable
 #set $maincolor #ed8712
 set $maincolor #eac58d
 set $fgwhite #dcdcdc
-set $blackdarkest #1d1d1d
+set $blackdarkest #191a1d
 #set $blackwidget  #262626
 set $blackwidget  #31363b
 set $blackentry   #292929

@@ -131,6 +131,9 @@ _stow i3
 echo -e "\n## BSPWM\n"
 _stow bspwm
 
+echo -e "\n## POLYBAR\n"
+_stow polybar
+
 echo -e "\n## SXHKD\n"
 _stow sxhkd
 

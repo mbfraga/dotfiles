@@ -15,3 +15,5 @@
 **sync-conflict**
 **/qutebrowser/bookmarks
 **/qutebrowser/quickmarks
+**/qutebrowser/autoconfig.yml
+**/qutebrowser/qsettings
