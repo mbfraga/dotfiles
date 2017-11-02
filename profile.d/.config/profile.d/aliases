@@ -64,6 +64,16 @@ alias mpdscribble='mpdscribble --conf $XDG_CONFIG_HOME/mpdscribble/mpdscribble.c
 alias weechat='weechat -d $XDG_CONFIG_HOME/weechat'
 alias mutt='mutt -F "$XDG_CONFIG_HOME"/mutt/muttrc'
 
+if (command -v newsboat >/dev/null 2>&1); then
+   local news_cmd='newsboat'
+   local pod_cmd='podboat'
+else
+   local news_cmd='newsbeuter'
+   local pod_cmd='podbeuter'
+fi
+alias newsbeuter="$news_cmd -C $XDG_CONFIG_HOME/newsbeuter/config"
+alias podbeuter="$pod_cmd   -C $XDG_CONFIG_HOME/newsbeuter/config"
+
 
 #--[ Mounts ]--
 alias alexandria_mount="sshfs martin@192.168.1.50:/mnt/alexandria ~/remote/alexandria"

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ -z "$NOROOT" ]]; then
-   NOROOT=false
+   NOROOT=true
 fi
 if [[ -z "$HOST" ]]; then
    HOST="$(hostname)"
@@ -160,4 +160,8 @@ _stow qutebrowser
 
 echo -e "\n##EVENTD\n"
 _stow eventd
+
+echo -e "\n##NEWSBEUTER\n"
+mkdir -p $XDG_DATA_HOME/newsbeuter
+_stow newsbeuter
 

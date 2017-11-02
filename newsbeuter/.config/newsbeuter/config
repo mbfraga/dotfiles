@@ -1,0 +1,27 @@
+#--[ general ]--
+max-items           100
+browser             qutebrowser
+show-read-feeds     no
+
+
+#--[ bindings ]--
+unbind-key          R
+bind-key            ^R reload-all
+
+
+#--[ colors ]--
+ # color <element> <fg color> <bg color> [<attributes> ...]
+  # elements:   listnormal, listfocus, listnormal_unread, listfocus_unread,
+  #             info, background, article
+  # colors:     black, red, green, yellow, blue, magenta, cyan, white,
+  #             default, color<n>
+  # attributes: standout, underline, reverse, blink, dim, bold, protect, invis
+ #
+color background          color15   color0
+color listnormal          color7    color0
+color listfocus           color15   color8
+color listnormal_unread   color15   color0
+color listfocus_unread    color3    color8
+color info                color235    color15 standout
+color article             color15   color0
+
