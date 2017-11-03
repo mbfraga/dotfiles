@@ -1,7 +1,24 @@
 #--[ general ]--
 max-items           100
 browser             qutebrowser
+cleanup-on-quit     yes
+download-path       "~/Documents/podcasts"
+cache-file          "~/.config/newsboat/cache.db"
+feed-sort-order     title-dec
 show-read-feeds     no
+max-downloads       4
+notify-format       "newsboat: %n unread articles within %f unread feeds"
+notify-program      notify-send
+notify-xterm        yes
+notify-screen       yes
+player              mpv
+refresh-on-startup  yes
+reload-time         20
+reload-threads      2
+show-read-articles  no
+show-read-feeds     no
+
+
 
 
 #--[ bindings ]--
@@ -21,6 +38,34 @@ color background          color15   color0
 color listnormal          color7    color0
 color listfocus           color15   color8
 color listnormal_unread   color15   color0
-color listfocus_unread    color3    color8
-color info                color237    color15 standout
+color listfocus_unread    color15   color8
+color info                color8    color3 standout
 color article             color15   color0
+
+
+highlight article "(^Feed:|^Author:|^Link:|^Date:).*" color7  default
+highlight article "(^Title:)"                         color7  default protect
+highlight article "^Links:"                           color7  default
+highlight article "\\[[0-9][0-9]*\\]"                 color12  default  bold
+highlight article "\\[image [0-9][0-9]*\\]"           color12  default  bold
+highlight article "\\[embedded flash: [0-9][0-9]*\\]" color12  default  bold
+highlight article ":.*\\(link\\)$"                    color4  default
+highlight article ":.*\\(image\\)$"                   color4  default
+highlight article ":.*\\(embedded flash\\)$"          color4  default
+
+#--[ formatting ]--
+feedlist-format     "%4i %n %11u %t"
+articlelist-format  "%4i %f %D %?T?|%-17T| ?%t"
+notify-format       "%d new articles (%n unread articles, %f unread feeds)"
+
+feedlist-title-format     "｢ nb ｣ - Feeds List (%u/%t)%?T?, Tag [%T]&?"
+articlelist-title-format  "｢ nb ｣ - Articles For '%T' (%u/%t), URL [%U]"
+searchresult-title-format "｢ nb ｣ - Search Result (%u/%t)"
+filebrowser-title-format  "｢ nb ｣ - %?O?Open File&Save File? - %f"
+help-title-format         "｢ nb ｣ - Help"
+selecttag-title-format    "｢ nb ｣ - Select Tag"
+selectfilter-title-format "｢ nb ｣ - Select Filter"
+itemview-title-format     "｢ nb ｣ - Article %T (%u/%t)"
+urlview-title-format      "｢ nb ｣ - URLs"
+dialogs-title-format      "｢ nb ｣ - Dialogs"
+

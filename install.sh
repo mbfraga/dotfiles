@@ -161,7 +161,7 @@ _stow qutebrowser
 echo -e "\n##EVENTD\n"
 _stow eventd
 
-echo -e "\n##NEWSBEUTER\n"
-mkdir -p $XDG_DATA_HOME/newsbeuter
-_stow newsbeuter
+echo -e "\n##NEWSBOAT\n"
+mkdir -p $XDG_DATA_HOME/newsboat
+_stow newsboat
 

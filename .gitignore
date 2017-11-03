@@ -17,4 +17,5 @@
 **/qutebrowser/quickmarks
 **/qutebrowser/autoconfig.yml
 **/qutebrowser/qsettings
-**/newsbeuter/urls
+**/newsboat/urls
+**/newsboat/cache.db*
