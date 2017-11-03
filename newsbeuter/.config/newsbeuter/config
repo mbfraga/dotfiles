@@ -22,6 +22,6 @@ color listnormal          color7    color0
 color listfocus           color15   color8
 color listnormal_unread   color15   color0
 color listfocus_unread    color3    color8
-color info                color235    color15 standout
+color info                color237    color15 standout
 color article             color15   color0
 

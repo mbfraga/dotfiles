@@ -22,7 +22,7 @@ if [[ -d "$HOME/bin" ]]; then
    export PATH="$HOME/bin:$PATH"
 fi
 
-
+export QT_QPA_PLATFORMTHEME=gtk2
 export BROWSER=qutebrowser
 export VISUAL=nvim
 export EDITOR=nvim

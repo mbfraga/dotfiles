@@ -94,3 +94,17 @@ function fmpc() {
   [ -n "$song_position" ] && mpc -q play $song_position
 }
 
+
+#--[ ptpb ]--
+pb () {
+   curl -F "c=@${1:--}" https://ptpb.pw/
+}
+
+pbx () {
+   url -sF "c=@${1:--}" -w "%{redirect_url}" 'https://ptpb.pw/?r=1' -o /dev/stderr | xsel -l /dev/null -b
+}
+
+pbs () {
+   asciinema rec /tmp/$$.json
+   pbx /tmp/$$.json
+}
