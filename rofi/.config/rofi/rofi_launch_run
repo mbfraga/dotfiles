@@ -7,5 +7,7 @@
 :q qnr            |qnr
 :c telegram       |open_if_noinst telegram TelegramDesktop
 :w weechat        |open_if_noinst  "st -c weechat-st -e weechat -d $XDG_CONFIG_HOME/weechat" weechat-st
-:n ncmpcpp        |open_if_noinst  "st -c ncmpcpp-st -e ncmpcpp" ncmpcpp-st
+:a ncmpcpp        |open_if_noinst  "st -c ncmpcpp-st -e ncmpcpp" ncmpcpp-st
+:nw newsbeuter    |open_if_noinst  "st -c newsboat-st -e newsboat" newsboat-st
+:np podbeuter     |open_if_noinst  "st -c podboat-st -e podboat" podboat-st
 :p dmenu_smart    |dmenu_smart
