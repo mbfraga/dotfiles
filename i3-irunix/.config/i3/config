@@ -67,7 +67,7 @@ hide_edge_borders smart
 # GAPS
 ######
 
-smart_gaps on
+#smart_gaps on
 
 
 ###################
@@ -469,19 +469,16 @@ for_window [title="Quick Format Citation"] floating enable
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 #
-#set $maincolor #77aadb
-#set $maincolor #ed8712
-set $maincolor #eac58d
-set $fgwhite #dcdcdc
-set $blackdarkest #1d1d1d
-#set $blackwidget  #262626
-set $blackwidget  #31363b
-set $blackentry   #292929
-set $blackselect  #303030
-set $darkgray    #84848
-#set $urgentcolor #ff7066
-set $urgentcolor #e13d31
-set $darkurgent  #472b2a
+#set $maincolor    #77aadb     # old blue
+set $maincolor    #eac58d  # golden temple | 03
+set $fgwhite      #ece3d0  # granite       | 15
+set $blackdarkest #191a1d  # bg0           | 0,235
+set $blackwidget  #26272c  # bg0_soft      | 236
+set $blacksoft    #393b41  # bg2           | 239
+set $darkgray     #707681  # gray+         | 07
+set $urgentcolor  #ea4439  # night temple  | 10
+set $darkurgent   #472b2a
+
 bar {
 
    output DP-0.8
@@ -543,10 +540,11 @@ font pango: DejaVu Sans Mono 10
 new_window pixel 2
 #new_float pixel 3
 # new
-client.focused           $maincolor   $maincolor   $blackwidget  $urgentcolor
-client.focused_inactive  $blackdarkest $blackdarkest $maincolor    $darkurgent
-client.unfocused         $blackwidget $blackwidget $maincolor    $blackdarkest
-client.urgent            $urgentcolor $urgentcolor $blackdarkest $urgentcolor
+#                        $border       $bg           $fg           $sel
+client.focused           $maincolor    $maincolor    $blackwidget  $urgentcolor
+client.focused_inactive  $blacksoft    $blacksoft    $maincolor    $darkurgent
+client.unfocused         $blackwidget  $blackwidget  $darkgray     $blackdarkest
+client.urgent            $urgentcolor  $urgentcolor  $blackdarkest $urgentcolor
 
 #TESTING
 bindsym $mod+m exec eventdctl nd dismiss oldest
