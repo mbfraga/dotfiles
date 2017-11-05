@@ -2,6 +2,9 @@
 
 Relatively minimal theme that goes well with my current i3 theme.
 
+While this configuration is working perfectly, I have moved from dunst to
+eventd.
+
 ## bindings
 
 Super+n            Redisplay the last message
@@ -14,16 +17,16 @@ Super+Shift+im     Context menu (open dmenu if there is a URL)
 1. Frame        #1e1e1e
 
 2. Low Urgency
-   - background   #31363b
-   - foreground   #cfcfcf
+   - background   #26272c
+   - foreground   #ece3d0
 
 3. Low Urgency
-   - background   #31363b
-   - foreground   #cfcfcf
+   - background   #26272c
+   - foreground   #ece3d0
 
 4. Low Urgency
-   - background   #31363b
-   - foreground   #dd4433
+   - background   #26272c
+   - foreground   #ea4439
 
 ## Screenshot
 

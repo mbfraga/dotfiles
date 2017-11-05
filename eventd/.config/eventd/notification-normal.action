@@ -8,7 +8,3 @@ Name=notification-normal
 
 [NotificationBubble]
 Timeout=5
-Colour=#31363b
-
-[NotificationText]
-Colour=#cfcfcf

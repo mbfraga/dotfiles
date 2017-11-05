@@ -1,7 +1,7 @@
 [global]
-    font = DejaVu Sans 10
+    font = DejaVu Sans 11
 
-    allow_markup = yes
+    markup = yes
 
     # The format of the message.  Possible variables are:
     #   %a  appname
@@ -133,9 +133,8 @@
     # Paths to default icons.
     icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
 
-[frame]
-    width = 2
-    color = "#1e1e1e"
+    frame_width = 2
+    frame_color = "#191a1d"
 
 [shortcuts]
 
@@ -161,18 +160,18 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#31363B"
-    foreground = "#cfcfcf"
+    background = "#26272c"
+    foreground = "#ece3d0"
     timeout = 5
 
 [urgency_normal]
-    background = "#31363b"
-    foreground = "#cfcfcf"
+    background = "#26272c"
+    foreground = "#ece3d0"
     timeout = 15
 
 [urgency_critical]
-    background = "#31363b"
-    foreground = "#dd4433"
+    background = "#26272c"
+    foreground = "#ea4439"
     timeout = 0
 
 

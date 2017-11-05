@@ -4,10 +4,3 @@ Extends=notification.action
 [Action]
 Name=notification-low
 
-[Notification]
-
-[NotificationBubble]
-Colour=#31363b
-
-[NotificationText]
-Colour=#cfcfcf

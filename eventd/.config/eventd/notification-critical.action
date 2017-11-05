@@ -8,7 +8,6 @@ Name=notification-critical
 
 [NotificationBubble]
 Timeout=0
-Colour=#31363b
 
 [NotificationText]
-Colour=#dd4433
+Colour=#ea4439
