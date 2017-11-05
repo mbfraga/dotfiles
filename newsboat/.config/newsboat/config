@@ -2,16 +2,13 @@
 max-items           100
 browser             qutebrowser
 cleanup-on-quit     yes
-download-path       "~/Documents/podcasts"
 cache-file          "~/.config/newsboat/cache.db"
 feed-sort-order     title-dec
 show-read-feeds     no
-max-downloads       4
 notify-format       "newsboat: %n unread articles within %f unread feeds"
 notify-program      notify-send
 notify-xterm        yes
 notify-screen       yes
-player              mpv
 refresh-on-startup  yes
 reload-time         20
 reload-threads      2
@@ -19,11 +16,28 @@ show-read-articles  no
 show-read-feeds     no
 
 
+#--[ podboat ] --
+
+download-path       "~/Documents/podcasts"
+max-downloads       4
+player              mpv
 
 
 #--[ bindings ]--
+bind-key h left
+bind-key k up
+bind-key j down
+bind-key l right
+bind-key f pageup
+bind-key b pagedown
+
 unbind-key          R
 bind-key            ^R reload-all
+
+#--[ macros ]--
+#macro q set browser "mpv-url %u &" ; open-in-browser ; set browser "web %u &"
+ # Open 4th url in an article
+#macro i open ; four ; quit
 
 
 #--[ colors ]--
@@ -42,6 +56,8 @@ color listfocus_unread    color15   color8
 color info                color8    color3 standout
 color article             color15   color0
 
+
+search-highlight-colors   color208  color0 standout
 
 highlight article "(^Feed:|^Author:|^Link:|^Date:).*" color7  default
 highlight article "(^Title:)"                         color7  default protect

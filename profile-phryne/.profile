@@ -24,5 +24,5 @@ export BROWSER=qutebrowser
 export VISUAL=nvim
 export EDITOR=nvim
 export TERMINAL="st"
-
+export PAGER="less"
 
