@@ -80,9 +80,9 @@ bindsym $mod+t exec $terminal
  #- Right Alt list special characters
  bindcode 108 exec special_characters
  #- eventd
- bindsym $mod+m exec eventdctl nd dismiss oldest
- bindsym $mod+Shift+m exec eventdctl nd dismiss all
- bindsym $mod+n exec rofication-gui.py
+ bindsym $mod+n exec eventdctl nd dismiss oldest
+ #bindsym Ctrl+$mod+n exec eventdctl nd dismiss all
+ bindsym $rmod+n exec rofication-gui
 
 #--[ Window Management Keybindings ]--
  #- Kill focused window

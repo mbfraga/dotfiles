@@ -6,12 +6,11 @@ Relatively minimal theme that goes well with my current i3 theme.
 
 These are set in $XDG_CONFIG_HOME/i3/config
 
-Super+n            Show rofication_gui.py (to list history of notifications and
+Super+Shift+n            Show rofication_gui (to list history of notifications and
 act on them)
 
-Super+m            Close notification
+Super+n            Close notification
 
-Super+Shift+m      Close all notifications
 
 ## Colors
 

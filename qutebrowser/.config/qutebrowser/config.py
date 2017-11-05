@@ -47,10 +47,10 @@
 
 granite = '#ece3d0'
 bg_normal = '#191a1d'
-bg_hard = '#02060d'
-bg_soft = '#222326'
-gray_soft = '#5a6373'
-gray_hard = '#333841'
+bg_hard = '#0e1118'
+bg_soft = '#26272c'
+gray_soft = '#707681'
+gray_hard = '#33373e'
 temple = '#ea4439'
 gold = '#fab81d'
 old_gold = '#eac58d'
@@ -59,6 +59,8 @@ green_tea = '#50763d'
 moss = '#bad260'
 gnu_orange = '#ed8712'
 aqua_light = '#c6f3e6'
+
+hint_color = 'rgba(234, 197, 141, 0.8)'
 
 foreground = granite
 interface_black = bg_normal
@@ -78,7 +80,6 @@ element_lightgreen = moss
 element_lightaqua = aqua_light
 
 
-hint_color = 'rgba(234, 197, 141, 0.8)'
 
 
 

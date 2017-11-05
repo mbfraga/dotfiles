@@ -5,63 +5,72 @@ ncmpcpp_directory="/home/martin/.config/ncmpcpp"
 visualizer_fifo_path = "/tmp/mpd.fifo"
 visualizer_output_name = "my_fifo"
 visualizer_type = "wave" (spectrum/wave)
-colors_enabled="yes"
+visualizer_sync_interval = "10"
 
 #--[ connection settings ]--
   #- Set it in order to make tag editor and renaming files work properly
 # mpd_host = "localhost"
 # mpd_port = "6600"
 
-#"$L(9)[black]{l} (20)[red]{a} (30)[blue]{b} $L(20)[default]{t}"
+#--[ Formatting ]--
+song_window_title_format = "mpd: {%a - }{%t}{ [%b{ Disc %d}]}|{%f}"
+
 song_columns_list_format = "(3f)[yellow]{n} (40)[default]{t|f} (30)[white]{a|A} (30)[white]{br} (5f)[white]{lr}"
-#song_list_format = "$1$9%l$1$9 $1¦$9 $2%a$9 $1¦$9 $5%b$9 $R$1$9%t$1$9 $1¦$9 $1%n$9"
-#song_list_format = "$(16)%t$9 $R $(8){%A}{%a}$9"
-song_list_format = "%D/%f"
-now_playing_prefix = "$b"
+now_playing_prefix = "$b$4>$9"
 now_playing_suffix = "$/b"
-playlist_display_mode = "columns" #(classic/columns)
-autocenter_mode = "yes"
-centered_cursor = "yes"
-cyclic_scrolling = "no"
-mouse_list_scroll_whole_page = "no"
+
+song_list_format = "%D/%f"
+song_status_format  = "$(16){%t}$(8){ - %a}"
 song_library_format = "{%n - }{%t}|{%f}"
 
-#--[ Bars ]--
-song_status_format = "$1{%a - }{%t}"
-progressbar_look = "─╼ "
+playlist_display_mode = "columns" #(classic/columns)
+browser_display_mode = "columns"  #(classic/columns)
+search_engine_display_mode = "columns"  #(classic/columns)
+playlist_editor_display_mode = "columns"
+autocenter_mode = "yes"
+centered_cursor = "yes"
+user_interface = "classic"
+cyclic_scrolling = "no"
+mouse_support = "yes"
+mouse_list_scroll_whole_page = "no"
+follow_now_playing_lyrics = "yes"
 
-#--[ 
-titles_visibility = "no"
 header_visibility = "yes"
 statusbar_visibility = "yes"
-#now_playing_prefix = "."
+titles_visibility = "no"
 
-#--[ 
+
+#--[ Bars ]--
+progressbar_look = "━━─"
+progressbar_color = "9" 
+progressbar_elapsed_color = "4"
+progressbar_boldness = "yes"
+
 browser_playlist_prefix = "$2plist »$9 "
-browser_display_mode = "columns" (classic/columns)
 
 #--[ Colors ]--
+colors_enabled="yes"
 discard_colors_if_item_is_selected = "yes"
 main_window_color = "default"
+
 
 header_window_color = "8"
 volume_color = "8"
 state_line_color = "9"
-state_flags_color = "5"
+state_flags_color = "8"
 
-color1 = "11"
-color2 = "13"
-#main_window_highlight_color = "blue"
-progressbar_color = "9" 
-progressbar_elapsed_color = "4"
 statusbar_color = "4"
-#current_item_inactive_column_prefix = 
-#current_item_inactive_column_suffix =
+
 visualizer_color = "4"
 
+empty_tag_color = "8"
+color1 = "4"
+color2 = "15"
+current_item_prefix = "$(4)$r"
+current_item_suffix = "$/r$(end)"
+#current_item_inactive_column_prefix = 
+#current_item_inactive_column_suffix =
+
 # Others
-song_window_title_format = "MPD: {%a - }{%t}{ [%b{ Disc %d}]}|{%f}"
-search_engine_display_mode = "columns" (classic/columns)
-follow_now_playing_lyrics = "yes"
 
 # vim: set ts=2 sw=2 tw=0 :

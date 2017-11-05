@@ -2,8 +2,6 @@
 # Martin B. Fraga
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 # REQUIRES:
-#  xset
-#  numlockx
 #  i3lock (aliased to slock)
 #  nm-applet
 #  Telegram
@@ -80,9 +78,9 @@ bindsym $mod+t exec $terminal
  #- Right Alt list special characters
  bindcode 108 exec special_characters
  #- eventd
- bindsym $mod+m exec eventdctl nd dismiss oldest
- bindsym $mod+Shift+m exec eventdctl nd dismiss all
- bindsym $mod+n exec rofication-gui.py
+ bindsym $mod+n exec eventdctl nd dismiss oldest
+ #bindsym $mod+Shift+m exec eventdctl nd dismiss all
+ bindsym $rmod+n exec rofication-gui.py
 
 #--[ Window Management Keybindings ]--
  #- Kill focused window
@@ -368,7 +366,6 @@ assign [class="Steam"] 5
 assign [class="Lutris"] 5
 #for_window [class="it-unitn-ing-rista-Maud"] floating enable
 #for_window [title="GNU Image Manipulation Program"] floating enable
-#
 for_window [title="Quick Format Citation"] floating enable
 
 
