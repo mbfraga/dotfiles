@@ -469,14 +469,14 @@ for_window [title="Quick Format Citation"] floating enable
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 #
-#set $maincolor    #77aadb     # old blue
-set $maincolor    #eac58d  # golden temple | 03
-set $fgwhite      #ece3d0  # granite       | 15
-set $blackdarkest #191a1d  # bg0           | 0,235
-set $blackwidget  #26272c  # bg0_soft      | 236
-set $blacksoft    #393b41  # bg2           | 239
-set $darkgray     #707681  # gray+         | 07
-set $urgentcolor  #ea4439  # night temple  | 10
+#set $maincolor    #77aadb
+set $maincolor    #eac58d
+set $fgwhite      #ece3d0
+set $blackdarkest #191a1d
+set $blackwidget  #26272c
+set $blacksoft    #393b41
+set $darkgray     #707681
+set $urgentcolor  #ea4439
 set $darkurgent   #472b2a
 
 bar {
