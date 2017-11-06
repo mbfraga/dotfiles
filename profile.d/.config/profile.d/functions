@@ -108,3 +108,7 @@ pbs () {
    asciinema rec /tmp/$$.json
    pbx /tmp/$$.json
 }
+
+slop_zoom () {
+   slop --shader=boxzoom
+}
