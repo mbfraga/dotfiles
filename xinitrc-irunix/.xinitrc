@@ -41,6 +41,12 @@ setxkbmap -option caps:super
 #xmodmap -e "keycode 124 = Delete"
 #xkbcomp -I $XDG_CONFIG_HOME/xkb $XDG_CONFIG_HOME/xkb/keymap/mykbd $DISPLAY
 
+function eventdlock () {
+   eventdctl nd stop
+   i3lock -c "333333" -n -e 
+   eventdctl reload
+}
+
 session=${1:-i3}
 case $session in
    i3|i3wm         ) 
@@ -50,7 +56,7 @@ case $session in
       eventdctl nd switch xcb ${DISPLAY}
       xset s 300
       xset r rate 210 18
-      xss-lock -- i3lock -e -c "333333" &
+      xss-lock -- eventdlock &
       exec i3; vlock
       ;;
    mate            ) exec mate-session;;
@@ -62,7 +68,7 @@ case $session in
       sxhkd &
       xset s 300
       xset r rate 210 18
-      xss-lock -- i3lock -e -c "333333" &
+      xss-lock -- eventdlock &
       exec bspwm; vlock
       ;;
    openbox         )
@@ -72,7 +78,7 @@ case $session in
       sxhkd &
       xset s 300
       xset r rate 210 18
-      xss-lock -- i3lock -e -c "333333" &
+      xss-lock -- eventdlock &
       exec openbox-session; vlock
       ;;
 
