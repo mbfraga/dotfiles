@@ -41,7 +41,6 @@ set $browser qutebrowser
  set $rmod Mod4+Shift
 
 
-
 #--[ General ]--
 focus_follows_mouse no
 mouse_warping none
@@ -372,6 +371,10 @@ assign [class="Lutris"] 5
 for_window [title="Quick Format Citation"] floating enable
 
 
+#=======#
+# Theme #
+#=======#
+#
 #--[ colors ]--
 #set $maincolor    #77aadb
 set $maincolor    #eac58d
@@ -441,7 +444,7 @@ bar {
 }
 
 #--[ Look ]--
-font pango: DejaVu Sans Mono 10
+font pango: DejaVu Sans 10
 new_window pixel 2
 #                        $border       $bg           $fg           $sel
 client.focused           $maincolor    $maincolor    $blackwidget  $urgentcolor

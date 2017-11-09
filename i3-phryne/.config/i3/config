@@ -7,22 +7,18 @@
 #  nitrogen
 #
 
-#--[ Unbind stupid mouse scrolly things ]--
-bindsym button4 nop
-bindsym button5 nop
+#==========#
+# Settings #
+#==========#
 
-#--[ General settings ]--
-focus_follows_mouse no
-# show_marks yes
-mouse_warping none
-hide_edge_borders smart 
-# new_float pixel 3
+#--[ Workspace names ]--
 
-#--[ Autostart apps ]--
-exec telegram -startintray &
-exec --no-startup-id nitrogen --restore
-exec --no-startup-id compton
-# bindsym Ctrl+Shift+F12 exec ~/bin/compton_toggle
+
+#--[ Applications ]--
+set $terminal st
+set $editor nvim
+set $browser qutebrowser
+
 
 #--[ Modifier keys ]--
  #- Main mod key is Super key
@@ -31,205 +27,220 @@ set $mod Mod4
 set $rmod Mod4+Shift
 
 
-#--[ Keybindings ]--
- #- Application Keybindings
-bindsym $mod+Return exec "$TERMINAL || i3-sensible-terminal"
-bindsym $mod+t exec "$TERMINAL || i3-sensible-terminal"
-bindsym $mod+f exec "$BROWSER || firefox"
-bindsym $mod+e exec dolphin
-# bindsym $mod+n exec termite --name ncmpcpp -e ncmpcpp playlist
-bindsym $mod+d exec rofi -show run
-bindsym $mod+g exec rofi -show window
-bindsym Mod1+Tab exec rofi -show window
-bindsym $mod+c exec telegram
-bindsym $mod+r exec rofi_launch ~/.config/rofi/rofi_launch_run
-bindsym $mod+o exec rofi_launch ~/.config/rofi/rofi_launch_run
+#--[ General ]--
+focus_follows_mouse no
+mouse_warping none
+hide_edge_borders smart 
+# show_marks yes
+#workspace_auto_back_and_forth yes
+ #- Disable mouse operations
+ bindsym button4 nop
+ bindsym button5 nop
 
-bindsym $mod+q exec qnr
-bindsym $mod+w exec mbmain
 
+#--[ Autostart ]--
+exec telegram -startintray &
+exec --no-startup-id nitrogen --restore
+exec --no-startup-id compton
+bindsym Ctrl+Shift+F11 exec ~/bin/compton_toggle
+
+
+#=============#
+# KEYBINDINGS #
+#=============#
+#
+#--[ Application Keybindings ]--
+bindsym $mod+Return exec $terminal
+bindsym $mod+t exec $terminal
+
+ #- Start application launcher 
+ bindsym $mod+d exec rofi -show run
+ bindsym $mod+q exec qnr
+ bindsym $mod+r exec "rofi_launch ~/.config/rofi/rofi_launch_run"
  #- Lock Screen
-bindsym Ctrl+$mod+l exec --no-startup-id i3lock
-bindcode 108 exec specialcharacters
-
+ bindsym Ctrl+$mod+l exec --no-startup-id i3lock
+ #- Right Alt list special characters
+ bindcode 108 exec special_characters
+ #- eventd
+ bindsym $mod+n exec eventdctl nd dismiss oldest
+ #bindsym Ctrl+$mod+n exec eventdctl nd dismiss all
+ bindsym $rmod+n exec rofication-gui
 
 #--[ Window Management Keybindings ]--
  #- kill focused window
-bindsym $rmod+q kill
-bindsym Mod1+F3 kill
-bindsym Mod1+F4 kill
- #- change focus
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
- #- alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
- #- cycle windows (for single hand)
-# bindsym Mod1+Tab focus left
-# bindsym $mod+Tab focus left
-# bindsym Mod1+` focus right
+ bindsym $rmod+q kill
+ bindsym Mod1+F3 kill
+ bindsym Mod1+F4 kill
 
- #- move focused window
-bindsym $rmod+h move left
-bindsym $rmod+j move down
-bindsym $rmod+k move up
-bindsym $rmod+l move right
+ #- change focus
+ bindsym $mod+h focus left
+ bindsym $mod+j focus down
+ bindsym $mod+k focus up
+ bindsym $mod+l focus right
  #- alternatively, you can use the cursor keys:
-bindsym $rmod+Left move left
-bindsym $rmod+Down move down
-bindsym $rmod+Up move up
-bindsym $rmod+Right move right
+ bindsym $mod+Left focus left
+ bindsym $mod+Down focus down
+ bindsym $mod+Up focus up
+ bindsym $mod+Right focus right
+
+  #- move focused window
+ bindsym $rmod+h move left
+ bindsym $rmod+j move down
+ bindsym $rmod+k move up
+ bindsym $rmod+l move right
+ #- alternatively, you can use the cursor keys:
+ bindsym $rmod+Left move left
+ bindsym $rmod+Down move down
+ bindsym $rmod+Up move up
+ bindsym $rmod+Right move right
 
  #- split in horizontal orientation
-bindsym $mod+b split h
+ bindsym $mod+semicolon split h
  #- split in vertical orientation
-bindsym $mod+v split v
+ bindsym $mod+v split v
 
  #- enter fullscreen mode for the focused container
-bindsym $rmod+f fullscreen
+ bindsym $mod+f fullscreen
  #- container layout (stacked, tabbed, toggle split)
-# bindsym $rmod+s layout stacking
-bindsym $rmod+w layout tabbed
-bindsym $rmod+e layout toggle split
+ # bindsym $rmod+s layout stacking
+ bindsym $mod+w layout tabbed
+ bindsym $mod+e layout toggle split
 
  #- toggle tiling / floating
-bindsym $rmod+space floating toggle
+ bindsym $rmod+space floating toggle
  #- change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+ bindsym $mod+space focus mode_toggle
 
 # Focus
  #- focus the parent container
-bindsym $mod+a focus parent
+ bindsym $mod+a focus parent
  #- focus the child container
-bindsym $rmod+a focus child
+ bindsym $rmod+a focus child
+ bindsym $mod+c focus parent
+
 
 #--[ Workspace Management Keybindings ]--
  #- switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-
+ bindsym $mod+1 workspace 1
+ bindsym $mod+2 workspace 2
+ bindsym $mod+3 workspace 3
+ bindsym $mod+4 workspace 4
+ bindsym $mod+5 workspace 5
+ bindsym $mod+6 workspace 6
  #- move focused container to workspace
-bindsym $rmod+1 move container to workspace 1
-bindsym $rmod+2 move container to workspace 2
-bindsym $rmod+3 move container to workspace 3
-bindsym $rmod+4 move container to workspace 4
-bindsym $rmod+5 move container to workspace 5
-bindsym $rmod+6 move container to workspace 6
-
+ bindsym $rmod+1 move container to workspace 1
+ bindsym $rmod+2 move container to workspace 2
+ bindsym $rmod+3 move container to workspace 3
+ bindsym $rmod+4 move container to workspace 4
+ bindsym $rmod+5 move container to workspace 5
+ bindsym $rmod+6 move container to workspace 6
 
  #- switch between the current and the previously focused one
-#bindsym $mod+n workspace back_and_forth
-#bindsym $mod+Shift+n move container to workspace back_and_forth
-bindsym $mod+Tab workspace next
-
+ #bindsym $mod+n workspace back_and_forth
+ #bindsym $mod+Shift+n move container to workspace back_and_forth
+ #bindsym $mod+Tab workspace next
 
  #- scratchpad
-bindsym $rmod+minus move scratchpad
-bindsym $rmod+plus  scratchpad show
+ bindsym $rmod+m move scratchpad
+ bindsym $rmod+o scratchpad show
 
 
+#--[ modes ]--
  #- resize window (you can also use the mouse for that)
-bindsym $rmod+r mode "resize"
-mode "resize" {
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-         #- back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
+ bindsym $mod+s mode "resize"
+ bindsym $rmod+r mode "resize"
+ mode "resize" {
+         bindsym h resize shrink width 10 px or 10 ppt
+         bindsym j resize grow height 10 px or 10 ppt
+         bindsym k resize shrink height 10 px or 10 ppt
+         bindsym l resize grow width 10 px or 10 ppt
+         bindsym Left resize shrink width 10 px or 10 ppt
+         bindsym Down resize grow height 10 px or 10 ppt
+         bindsym Up resize shrink height 10 px or 10 ppt
+         bindsym Right resize grow width 10 px or 10 ppt
+          #- back to normal: Enter or Escape
+         bindsym Return mode "default"
+         bindsym Escape mode "default"
+ }
 
-mode "audio" {
-      bindsym a exec false
-      bindsym b exec false
-      bindsym c exec false
-      bindsym d exec false
-      bindsym e exec false
-      bindsym f exec false
-      bindsym g exec false
-      bindsym i exec false
-      bindsym h exec "mpc prev && now_playing -n || mpc prev"
-      bindsym j exec --no-startup-id amixer -D pulse set Master 3%- unmute 
-      bindsym k exec --no-startup-id amixer -D pulse set Master 3%+ unmute 
-      bindsym l exec "mpc next && now_playing -n || mpc next"
-      bindsym m exec --no-startup-id amixer -q -D pulse set Master toggle
-      bindsym n exec "now_playing -n"
-      bindsym o exec false
-      bindsym p exec mpc toggle
-      bindsym q exec false
-      bindsym s exec mpc stop
-      bindsym t exec false
-      bindsym u exec false
-      bindsym v exec false
-      bindsym w exec false
-      bindsym y exec false
-      bindsym z exec mpc random
-      bindcode Shift+59 exec mpc prev # <
-      bindcode Shift+59 exec "mpc prev && now_playing -n || mpc prev"
-      bindcode Shift+60 exec mpc next # >
-      bindcode Shift+60 exec "mpc next && now_playing -n || mpc next"
-
-   bindsym Return mode "default"
-   bindsym Escape mode "default"
-}
-
-mode "run" {
-   bindsym Return mode "default"
-   bindsym Escape mode "default"
-}
-
-mode "move" {
-   bindsym h move left 20px
-   bindsym j move down 20px
-   bindsym k move up 20px
-   bindsym l move right 20px
-
-   bindsym Shift+h move left 100px
-   bindsym Shift+j move down 100px
-   bindsym Shift+k move up 100px
-   bindsym Shift+l move right 100px
-
-   bindsym Mod1+h move left 10px
-   bindsym Mod1+j move down 10px
-   bindsym Mod1+k move up 10px
-   bindsym Mod1+l move right 10
-
-   bindsym Return mode "default"
-   bindsym Escape mode "default"
-}
-
-#bindsym $mod+w mode "modes"
-mode "modes" {
-   bindsym $mod+r mode "resize"
-   bindsym r mode "resize"
-   bindsym $mod+a mode "audio"
-   bindsym a mode "audio"
-   bindsym $mod+m mode "move"
-   bindsym m mode "move"
-
-   bindsym Return mode "default"
-   bindsym Escape mode "default"
-   }
+ mode "audio" {
+       bindsym a exec false
+       bindsym b exec false
+       bindsym c exec false
+       bindsym d exec false
+       bindsym e exec false
+       bindsym f exec false
+       bindsym g exec false
+       bindsym i exec false
+       bindsym h exec "mpc prev && now_playing -n || mpc prev"
+       bindsym j exec --no-startup-id amixer -D pulse set Master 3%- unmute 
+       bindsym k exec --no-startup-id amixer -D pulse set Master 3%+ unmute 
+       bindsym l exec "mpc next && now_playing -n || mpc next"
+       bindsym m exec --no-startup-id amixer -q -D pulse set Master toggle
+       bindsym n exec "now_playing -n"
+       bindsym o exec false
+       bindsym p exec mpc toggle
+       bindsym q exec false
+       bindsym s exec mpc stop
+       bindsym t exec false
+       bindsym u exec false
+       bindsym v exec false
+       bindsym w exec false
+       bindsym y exec false
+       bindsym z exec mpc random
+       bindcode Shift+59 exec mpc prev # <
+       bindcode Shift+59 exec "mpc prev && now_playing -n || mpc prev"
+       bindcode Shift+60 exec mpc next # >
+       bindcode Shift+60 exec "mpc next && now_playing -n || mpc next"
+ 
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+ }
+ 
+ mode "run" {
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+ }
+ 
+ mode "move" {
+    bindsym h move left 20px
+    bindsym j move down 20px
+    bindsym k move up 20px
+    bindsym l move right 20px
+ 
+    bindsym Shift+h move left 100px
+    bindsym Shift+j move down 100px
+    bindsym Shift+k move up 100px
+    bindsym Shift+l move right 100px
+ 
+    bindsym Mod1+h move left 10px
+    bindsym Mod1+j move down 10px
+    bindsym Mod1+k move up 10px
+    bindsym Mod1+l move right 10
+ 
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+ }
+ 
+ #bindsym $mod+w mode "modes"
+ mode "modes" {
+    bindsym $mod+r mode "resize"
+    bindsym r mode "resize"
+    bindsym $mod+a mode "audio"
+    bindsym a mode "audio"
+    bindsym $mod+m mode "move"
+    bindsym m mode "move"
+ 
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+ }
 
 
 #--[ Monitor Management Keybindings ]]-
  #- cycle monitor configurations
-bindsym $rmod+p exec ~/scripts/setmon2 -n cycle
+ bindsym $rmod+p exec ~/scripts/setmon2 -n cycle
  #- manage multimonitor
-bindsym $rmod+x move workspace to output right
+ bindsym $rmod+x move workspace to output right
 
 #--[ Mouse-clicky settings ]--
  #- Use Mouse+$mod to drag floating windows to their wanted position
@@ -238,11 +249,11 @@ bindsym --release button2 kill
 
 #--[ Misc ]--
  #- reload the configuration file
-bindsym Ctrl+Shift+c reload
+ # bindsym Ctrl+Shift+c reload
  #- restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym Ctrl+Shift+r restart
+ # bindsym Ctrl+Shift+r restart
  #- exit i3 (logs you out of your X session)
-bindsym Ctrl+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
+ # bindsym Ctrl+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
 
 
 #--[ Volume Control ]--
@@ -255,6 +266,14 @@ bindsym $mod+F7 exec xbacklight -inc 20 # increase screen brightness
 bindsym $mod+F6 exec xbacklight -dec 20 # decrease screen brightness
 
 #--[ Per-application Settings ]--
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+
 for_window [class="dota_linux"] none
 for_window [class="Gpick"] floating enable
 for_window [class="Pavucontrol"] floating enable
@@ -264,7 +283,12 @@ for_window [class="Tomboy"] floating enable
 #for_window [title="GNU Image Manipulation Program"] floating enable
 for_window [title="Quick Format Citation"] floating enable
 
-#--[ theme stuff ]--
+
+#=======#
+# Theme #
+#=======#
+#
+#--[ colors ]--
 set $maincolor    #eac58d
 set $fgwhite      #ece3d0
 set $blackdarkest #191a1d
@@ -274,10 +298,7 @@ set $darkgray     #707681
 set $urgentcolor  #ea4439
 set $darkurgent   #472b2a
 
-
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+#--[ i3 bar ]--
 bar {
    bindsym button4 nop
    bindsym button5 nop
@@ -303,7 +324,7 @@ bar {
 }
 
 # look
-font pango: Bitstream Vera Sans 10
+font pango: Dejavu Sans 10
 new_window pixel 3
 # new
 #                        $border       $bg           $fg           $sel
@@ -312,7 +333,3 @@ client.focused_inactive  $blacksoft    $blacksoft    $maincolor    $darkurgent
 client.unfocused         $blackwidget  $blackwidget  $darkgray     $blackdarkest
 client.urgent            $urgentcolor  $urgentcolor  $blackdarkest $urgentcolor
 
-#--[ TESTING ]--
-bindsym $mod+m exec eventdctl nd dismiss oldest
-bindsym $mod+Shift+m exec eventdctl nd dismiss all
-bindsym $mod+n exec rofication-gui.py
