@@ -61,19 +61,6 @@ if [ "${TERM}" = 'rxvt-256color' ] && ! [ -f '/usr/share/terminfo/r/rxvt-256colo
 fi
 
 
-#--[ Source other important files ]--
-source "$XDG_CONFIG_HOME/zsh/zsh_prompt.zsh"
-source "$XDG_CONFIG_HOME/zsh/zsh_functions.zsh"
-source "$XDG_CONFIG_HOME/zsh/host_specific/$(hostname).zsh" 
-# Source $XDG_CONFIG_HOME/profile/*
-# I keep my aliases and generic functions in there.
-if [[ -d "$XDG_CONFIG_HOME/profile.d" ]]; then
-   for f in $XDG_CONFIG_HOME/profile.d/*; do
-      . "$f"
-   done
-fi
-
-
 #--[ fzf ]--
 if [[ -e "$HOME/.fzf.zsh" ]]; then
    . "$HOME/.fzf.zsh"
@@ -85,6 +72,23 @@ fi
 export fzf_default_completion="expand-or-complete-prefix"
 #- 'literal trigger' & fzf-completion keybind to start fuzzy completion
 export FZF_COMPLETION_TRIGGER='//'
+
+
+#--[ z ]--
+export _Z_DATA="$XDG_CACHE_HOME/z"
+
+
+#--[ Source other important files ]--
+source "$XDG_CONFIG_HOME/zsh/zsh_prompt.zsh"
+source "$XDG_CONFIG_HOME/zsh/zsh_functions.zsh"
+source "$XDG_CONFIG_HOME/zsh/host_specific/$(hostname).zsh" 
+# Source $XDG_CONFIG_HOME/profile/*
+# I keep my aliases and generic functions in there.
+if [[ -d "$XDG_CONFIG_HOME/profile.d" ]]; then
+   for f in $XDG_CONFIG_HOME/profile.d/*; do
+      . "$f"
+   done
+fi
 
 
 #--[ dirstack ]--
