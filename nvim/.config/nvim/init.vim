@@ -21,8 +21,9 @@ Plug 'rhysd/clever-f.vim'
 Plug 'easymotion/vim-easymotion'
    "" Turn on case insensitive feature
    let g:EasyMotion_smartcase = 1
-" syntastic spell checking
-Plug 'scrooloose/syntastic'
+" Syntax Checking
+"Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 " sum script
 " Plug 'vim-scripts/visSum.vim'
 " colorize number formats
@@ -54,13 +55,18 @@ Plug 'itchyny/lightline.vim'
 " "Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 " "
 " " autocomplete
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " " Plug 'Shougo/deoplete.nvim', { 'for': ['javascript', 'html', 'css', 'python', 'ruby', 'php', 'C', 'C++' ], 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-jedi'
-" "" ignore certain files
+"Plug 'zchee/deoplete-jedi'
+"Plug 'zchee/deoplete-clang'
+Plug 'roxma/nvim-completion-manager'
+Plug 'roxma/ncm-clang'
+Plug 'Shougo/neoinclude.vim'
 
 "" EXTERNAL
 Plug 'christoomey/vim-tmux-navigator'
+
+
 
 " 
 " " NOT IN USE
@@ -88,10 +94,10 @@ call plug#end()
 let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_compiler_latexmk = { 'options' : [ '-xelatex']}
 " " Use deoplete.
-let g:deoplete#enable_at_startup = 0
-autocmd InsertEnter * call deoplete#enable()
-"let g:deoplete#ignore_sources = {}
-" "let g:deoplete#ignore_sources._ = ['around']
+"let g:deoplete#enable_at_startup = 0
+"autocmd InsertEnter * call deoplete#enable()
+""let g:deoplete#ignore_sources = {}
+"" "let g:deoplete#ignore_sources._ = ['around']
  
 
 " Syntastic
@@ -99,10 +105,10 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 0
+"let g:syntastic_check_on_wq = 0
 
 
 " " Load Custom Settings

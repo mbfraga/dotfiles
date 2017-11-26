@@ -34,3 +34,9 @@ export TERMINAL="st"
 . /usr/share/defaults/etc/profile.d/50-dircolors.sh
 . /usr/share/defaults/etc/profile.d/70-snapd.sh
 . /usr/share/defaults/etc/profile.d/vte.sh
+
+
+#--[ exa ]--
+
+export EXA_COLORS="ur=0:uw=0:ux=0:gr=0:gw=0:gx=0:tr=0:tw=0:tx=0"
+
