@@ -1,6 +1,6 @@
 #--[ general ]--
 max-items           100
-browser             qutebrowser
+browser             "qutebrowser --target tab-silent"
 cleanup-on-quit     yes
 cache-file          "~/.config/newsboat/cache.db"
 feed-sort-order     title-dec

@@ -59,6 +59,7 @@ exec ~/opt/Telegram/Telegram -startintray &
  #- Compton
  exec --no-startup-id compton
  bindsym Ctrl+Shift+F12 exec ~/bin/compton-toggle
+ exec --no-startup-id $HOME/.config/polybar/launch.sh
 
 
 #=============#
@@ -386,62 +387,63 @@ set $darkgray     #707681
 set $urgentcolor  #ea4439
 set $darkurgent   #472b2a
 
-#--[ i3 bar one ]--
-bar {
-   output DP-0.8
-   status_command i3blocks
-   position top #<top|bottom>
 
-   bindsym button4 nop
-   bindsym button5 nop
-   workspace_buttons yes #<yes|no>
-   hidden_state show #<hide|show>
-   mode dock #<dock|hide|invisible>
-   modifier Mod4
-   tray_output DP-0.8 #none|primary|<output>
-
-   font pango:DejaVu Sans Mono 11
-   tray_padding 2
-   separator_symbol "|"
-   colors {
-      separator $darkgray
-      background $blackwidget
-      statusline $fgwhite
-      focused_workspace $maincolor $maincolor $blackdarkest
-      active_workspace $blackwidget $blackwidget $maincolor
-      inactive_workspace $blackwidget $blackwidget $darkgray
-      urgent_workspace $urgentcolor $blackwidget $urgentcolor
-   }
-}
+##--[ i3 bar one ]--
+#bar {
+#   output DP-0.8
+#   status_command i3blocks
+#   position top #<top|bottom>
+#
+#   bindsym button4 nop
+#   bindsym button5 nop
+#   workspace_buttons yes #<yes|no>
+#   hidden_state show #<hide|show>
+#   mode dock #<dock|hide|invisible>
+#   modifier Mod4
+#   tray_output DP-0.8 #none|primary|<output>
+#
+#   font pango:DejaVu Sans Mono 11
+#   tray_padding 2
+#   separator_symbol "|"
+#   colors {
+#      separator $darkgray
+#      background $blackwidget
+#      statusline $fgwhite
+#      focused_workspace $maincolor $maincolor $blackdarkest
+#      active_workspace $blackwidget $blackwidget $maincolor
+#      inactive_workspace $blackwidget $blackwidget $darkgray
+#      urgent_workspace $urgentcolor $blackwidget $urgentcolor
+#   }
+#}
 
 #--[ i3 bar two ]--
-bar {
-   output DVI-D-0
-   status_command i3blocks
-   position top #<top|bottom>
-
-   bindsym button4 nop
-   bindsym button5 nop
-   workspace_buttons yes #<yes|no>
-   hidden_state show #<hide|show>
-   mode dock #<dock|hide|invisible>
-   modifier Mod4
-   tray_output DP-0.8 #none|primary|<output>
-
-   font pango:DejaVu Sans Mono 9
-   tray_padding 2
-   separator_symbol "|"
-   colors {
-      separator $darkgray
-      background $blackwidget
-      statusline $fgwhite
-      focused_workspace $maincolor $maincolor $blackdarkest
-      active_workspace $blackwidget $blackwidget $maincolor
-      inactive_workspace $blackwidget $blackwidget $darkgray
-      urgent_workspace $urgentcolor $blackwidget $urgentcolor
-   }
-
-}
+#bar {
+#   output DVI-D-0
+#   status_command i3blocks
+#   position top #<top|bottom>
+#
+#   bindsym button4 nop
+#   bindsym button5 nop
+#   workspace_buttons yes #<yes|no>
+#   hidden_state show #<hide|show>
+#   mode dock #<dock|hide|invisible>
+#   modifier Mod4
+#   tray_output DP-0.8 #none|primary|<output>
+#
+#   font pango:DejaVu Sans Mono 9
+#   tray_padding 2
+#   separator_symbol "|"
+#   colors {
+#      separator $darkgray
+#      background $blackwidget
+#      statusline $fgwhite
+#      focused_workspace $maincolor $maincolor $blackdarkest
+#      active_workspace $blackwidget $blackwidget $maincolor
+#      inactive_workspace $blackwidget $blackwidget $darkgray
+#      urgent_workspace $urgentcolor $blackwidget $urgentcolor
+#   }
+#
+#}
 
 #--[ Look ]--
 font pango: DejaVu Sans 10
