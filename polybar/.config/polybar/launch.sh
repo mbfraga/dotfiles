@@ -1,5 +1,13 @@
 #!/usr/bin/env sh
 
+echo $#
+if [[ $# -gt 0 ]]; then
+   bar="$1"
+else
+   bar="$(hostname)"
+fi
+
+
 # Terminate already running bar instances
 killall -q polybar
 
@@ -7,7 +15,7 @@ killall -q polybar
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch bar1 and bar2
-polybar example &
+polybar "$bar" || polybar example &
 
 
 echo "Polybars launched..."
