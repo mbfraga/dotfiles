@@ -3,8 +3,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 # REQUIRES:
 #  Telegram
-#  compton
-#  nitrogen
+#  compton nitrogen
 #
 
 #==========#
@@ -43,6 +42,7 @@ exec telegram -startintray &
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id compton
 bindsym Ctrl+Shift+F11 exec ~/bin/compton_toggle
+ exec --no-startup-id $HOME/.config/polybar/launch.sh
 
 
 #=============#
@@ -265,6 +265,11 @@ bindsym $mod+F8 exec amixer -q -D pulse set Master toggle
 bindsym $mod+F7 exec xbacklight -inc 20 # increase screen brightness
 bindsym $mod+F6 exec xbacklight -dec 20 # decrease screen brightness
 
+##-[ Printscreen ]--
+#
+bindsym Print exec  sshot.py -n all
+bindsym $mod+y exec sshot.py -n all
+
 #--[ Per-application Settings ]--
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
@@ -299,29 +304,29 @@ set $urgentcolor  #ea4439
 set $darkurgent   #472b2a
 
 #--[ i3 bar ]--
-bar {
-   bindsym button4 nop
-   bindsym button5 nop
-   status_command i3blocks
-   position top #<top|bottom>
-   workspace_buttons yes #<yes|no>
-   hidden_state show #<hide|show>
-   mode dock #<dock|hide|invisible>
-   modifier Mod4
-   tray_padding 3
-
-   font pango:Hack 10
-
-  colors {
-      separator $darkgray
-      background $blackwidget
-      statusline $fgwhite
-      focused_workspace $maincolor $maincolor $blackdarkest
-      active_workspace $blackwidget $blackwidget $maincolor
-      inactive_workspace $blackwidget $blackwidget $darkgray
-      urgent_workspace $urgentcolor $blackwidget $urgentcolor
-  }
-}
+#bar {
+#   bindsym button4 nop
+#   bindsym button5 nop
+#   status_command i3blocks
+#   position top #<top|bottom>
+#   workspace_buttons yes #<yes|no>
+#   hidden_state show #<hide|show>
+#   mode dock #<dock|hide|invisible>
+#   modifier Mod4
+#   tray_padding 3
+#
+#   font pango:Hack 10
+#
+#  colors {
+#      separator $darkgray
+#      background $blackwidget
+#      statusline $fgwhite
+#      focused_workspace $maincolor $maincolor $blackdarkest
+#      active_workspace $blackwidget $blackwidget $maincolor
+#      inactive_workspace $blackwidget $blackwidget $darkgray
+#      urgent_workspace $urgentcolor $blackwidget $urgentcolor
+#  }
+#}
 
 # look
 font pango: Dejavu Sans 10

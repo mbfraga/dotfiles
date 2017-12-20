@@ -15,6 +15,7 @@ foreground-alt = #707681
 primary = #eac58d
 secondary = #446fa6
 alert = #ea4439
+warning = #fab81d
 
 [metrics]
 line-size = 3
@@ -57,6 +58,10 @@ modules-center = mpd
 modules-right  = eth volume date
 eth-interface = eth0
 
+master-soundcard = default
+battery = BAT0
+backlight-output = default
+
 
 [bar/irunix]
 inherit        = bar/generic
@@ -65,15 +70,20 @@ modules-center = mpd
 modules-right  = eth volume date
 
 eth-interface = enp3s0
+master-soundcard = default
 
 [bar/phryne]
 inherit        = bar/generic
 modules-left   = bspwm i3
 modules-center = mpd
-modules-right  = eth wifi volume date
+modules-right  = eth wifi battery volume date
+backlight-output = eDP1
+
 
 eth-interface = enp3s0
 wifi-interface = wlp1s0
+master-soundcard = default
+battery = BAT0
 
 [module/xwindow]
 type = internal/xwindow
@@ -169,14 +179,15 @@ label-disconnected-foreground = ${colors.alert}
 [module/wifi]
 type = internal/network
 interface = ${root.wifi-interface}
-interval = 3.0
+interval = 5.0
 
 format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 format-disconnected-prefix = " "
+format-disconnected-foreground = ${colors.foreground-alt}
 format-disconnected-prefix-foreground = ${colors.alert}
 
-label-connected = %signal%
+label-connected = %signal:2% %essid:0:5%
 label-disconnected = down
 
 
@@ -196,19 +207,69 @@ label = %date% %time%
 
 [module/volume]
 type = internal/volume
-master-soundcard    = default
+interval = 3
+master-soundcard    = ${root.master-soundcard}
 master-mixer        = Master
 ;headphone-id        = 9
 ;mapped              = true
 format-volume = <label-volume>
 format-volume-prefix = " "
 format-volume-prefix-foreground = ${colors.foreground-alt}
-label-volume = %percentage%%
-format-muted-prefix = " "
+label-volume = %percentage:2%
+format-muted-prefix = " "
 format-muted-prefix-foreground = ${colors.foreground-alt}
 label-muted-foreground = ${colors.foreground-alt}
-label-muted = "mute"
+label-muted = "mm"
 
+
+[module/battery]
+type = internal/battery
+full-at = 99
+battery = ${root.battery}
+poll-interval = 5
+time-format = %H:%M
+
+format-charging    = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+
+label-charging = %percentage:2% %time%
+label-discharging = %percentage:2% %time%
+label-full = 99
+
+
+; Only applies if <ramp-capacity> is used
+ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-0-foreground = ${colors.alert}
+ramp-capacity-1-foreground = ${colors.warning}
+ramp-capacity-0 =  
+ramp-capacity-1 =  
+ramp-capacity-2 =  
+ramp-capacity-3 =  
+ramp-capacity-4 =  
+
+; Only applies if <animation-charging> is used
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+; Framerate in milliseconds
+animation-charging-framerate = 750
+
+[module/backlight]
+type = internal/xbacklight
+output = ${root.backlight-output}
+enable-scroll = false
+format = <ramp>
+label = %percentage%
+
+; Only applies if <ramp> is used
+ramp-foreground = ${colors.foreground-alt}
+ramp-0 = 🌕
+ramp-1 = 🌔
+ramp-2 = 🌓
+ramp-3 = 🌒
+ramp-4 = 🌑
 
 [settings]
 screenchange-reload = true

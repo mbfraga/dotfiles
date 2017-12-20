@@ -13,6 +13,14 @@ fi
 if [[ -d "$HOME/gitland/scripts" ]]; then
    export PATH="$HOME/gitland/scripts:$PATH"
 fi
+if [[ -d "$HOME/gitland/scripts/external/bin" ]]; then
+   export PATH="$HOME/gitland/scripts/external/bin:$PATH"
+fi
+
+
+if [[ -d "$HOME/gitland/mbrun" ]]; then
+   export PATH="$HOME/gitland/mbrun:$PATH"
+fi
 
 if [[ -d "$HOME/bin" ]]; then
    export PATH="$HOME/bin:$PATH"
