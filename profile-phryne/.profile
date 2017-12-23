@@ -34,3 +34,4 @@ export EDITOR=nvim
 export TERMINAL="st"
 export PAGER="less"
 
+export DEFAULT_DISPLAY=eDP1

@@ -134,6 +134,9 @@ _stow bspwm
 echo -e "\n## POLYBAR\n"
 _stow polybar
 
+echo -e "\n## AUTORANDR\n"
+_stow autorandr
+
 echo -e "\n## SXHKD\n"
 _stow sxhkd
 
@@ -165,3 +168,5 @@ echo -e "\n##NEWSBOAT\n"
 mkdir -p $XDG_DATA_HOME/newsboat
 _stow newsboat
 
+echo -e "\n##BASHMOUNT\n"
+_stow bashmount

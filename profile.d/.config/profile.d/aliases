@@ -79,6 +79,7 @@ alias musicpi="ncmpcpp -h 192.168.1.34"
 #--[ i3 ]--
 alias mtm="i3-msg move workspace to output left"
 alias i3lock="i3lock -c '191a1d'"
+alias polybar-launch="~/.config/polybar/launch.sh -e"
 
 
 # Notes

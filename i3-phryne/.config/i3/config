@@ -42,7 +42,7 @@ exec telegram -startintray &
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id compton
 bindsym Ctrl+Shift+F11 exec ~/bin/compton_toggle
- exec --no-startup-id $HOME/.config/polybar/launch.sh
+exec --no-startup-id $HOME/.config/polybar/launch.sh -e
 
 
 #=============#
@@ -238,7 +238,8 @@ bindsym $mod+t exec $terminal
 
 #--[ Monitor Management Keybindings ]]-
  #- cycle monitor configurations
- bindsym $rmod+p exec ~/scripts/setmon2 -n cycle
+ bindsym $mod+p exec setmon-autorandr
+ bindsym $rmod+p exec autorandr laptop
  #- manage multimonitor
  bindsym $rmod+x move workspace to output right
 
@@ -330,7 +331,7 @@ set $darkurgent   #472b2a
 
 # look
 font pango: Dejavu Sans 10
-new_window pixel 3
+new_window pixel 2
 # new
 #                        $border       $bg           $fg           $sel
 client.focused           $maincolor    $maincolor    $blackwidget  $urgentcolor

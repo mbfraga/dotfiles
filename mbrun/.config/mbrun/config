@@ -3,6 +3,7 @@ show_mesg = False
 bind_enable = alt-e
 bind_disable = alt-d
 browser = firefox
+file_manager = st -e ranger
 
 [define]
 dictionary_file = dictd_www.dict.org_gcide
@@ -42,3 +43,11 @@ bind_new = alt-n
 bind_del = alt-d
 bind_rename = alt-r
 bind_chgurl = alt-u
+
+[mount]
+ignore_devices = sda,/dev/mapper
+bind_mount = alt-m
+bind_unmount = alt-u
+bind_refresh = alt-r
+bind_open = alt-o
+bind_eject = alt-e
