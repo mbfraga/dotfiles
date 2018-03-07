@@ -91,6 +91,26 @@ inherit         = bar/phryne
 monitor         = HDMI1
 monitor-strict  = true
 
+[bar/chani]
+inherit        = bar/generic
+modules-left   = bspwm i3
+modules-center = mpd
+modules-right  = eth wifi battery volume date
+backlight-output = eDP-1-1
+monitor        = eDP-1-1
+monitor-strict  = true
+
+eth-interface = enp0s25
+wifi-interface = wlp4s0
+master-soundcard = default
+battery = BAT0
+
+[bar/chani-ext]
+inherit         = bar/phryne
+monitor         = HDMI1
+monitor-strict  = true
+
+
 
 [module/xwindow]
 type = internal/xwindow
@@ -180,7 +200,7 @@ label-connected = up
 ;format-connected = <ramp-signal> <label-connected>
 ;format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected = :(
+label-disconnected = 
 label-disconnected-foreground = ${colors.alert}
 
 
