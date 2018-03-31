@@ -68,7 +68,7 @@ alias newsbeuter='newsboat'
 alias podbeuter='podboat'
 
 #--[ Mounts ]--
-alias alexandria_mount="sshfs martin@192.168.1.50:/mnt/alexandria ~/remote/alexandria"
+alias alexandria_mount="sshfs martin@alexandria:/mnt/alexandria ~/remote/alexandria"
 alias irulan_mount="sshfs martin@192.168.1.27:/ ~/remote/irulan"
 
 
