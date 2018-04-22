@@ -6,6 +6,15 @@ if [[ $- != *i*  ]]; then
    return
 fi
 
+
+# Source $XDG_CONFIG_HOME/profile/*
+# I keep my aliases and generic functions in there.
+if [[ -d "$XDG_CONFIG_HOME/profile.d" ]]; then
+   for f in $XDG_CONFIG_HOME/profile.d/*; do
+      . "$f"
+   done
+fi
+
 # Bash won't get SIGWINCH if another process is in the foreground.
 # Enable checkwinsize so that bash will check the terminal size when
 # it regains control.  #65623

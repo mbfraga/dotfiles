@@ -367,7 +367,7 @@ bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 bar {
    bindsym button4 nop
    bindsym button5 nop
-  status_command i3blocks
+   status_command i3blocks
    position top #<top|bottom>
    workspace_buttons yes #<yes|no>
    hidden_state show #<hide|show>

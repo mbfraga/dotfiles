@@ -77,6 +77,9 @@ _stow zsh
 echo "   creating $HOME/.cache/zsh"
 mkdir -p $HOME/.cache/zsh
 
+echo -e "\n##BASH\n"
+_stow bash
+
 echo -e "\n##PROFILE.D\n"
 _stow profile.d
 

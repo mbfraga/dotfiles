@@ -59,10 +59,12 @@ Plug 'itchyny/lightline.vim'
 " " Plug 'Shougo/deoplete.nvim', { 'for': ['javascript', 'html', 'css', 'python', 'ruby', 'php', 'C', 'C++' ], 'do': ':UpdateRemotePlugins' }
 "Plug 'zchee/deoplete-jedi'
 "Plug 'zchee/deoplete-clang'
-Plug 'roxma/nvim-completion-manager'
-Plug 'roxma/ncm-clang'
-Plug 'Shougo/neoinclude.vim'
+"Plug 'roxma/nvim-completion-manager'
+"Plug 'roxma/ncm-clang'
+"Plug 'Shougo/neoinclude.vim'
+"Plug 'Shougo/deoplete.vim'
 
+Plug 'Valloric/YouCompleteMe'
 "" EXTERNAL
 Plug 'christoomey/vim-tmux-navigator'
 
